@@ -1,0 +1,387 @@
+<?xml version="1.0"?>
+
+<!-- colin.urdf.xacro
+
+Colin
+
+meters, radians, kilograms
+
+-->
+
+<robot name="autocone_colin" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- ************ Constants ************ -->
+    <xacro:property name="pi" value="3.14159265359"/>
+
+    <!--
+        chassis_length along the x axis (+x = front)
+        chassis_width  along the y axis (+y = left)
+        chassis_height along the z axis (+z = up)
+
+        chassis_wheelbase along the x axis (distance between front and rear wheels)
+        chassis_wheeltrack along the y axis (distance between left and right wheels)
+    -->
+    <xacro:property name="chassis_length" value="0.370"/>
+    <xacro:property name="chassis_width" value="0.10"/>
+    <xacro:property name="chassis_height" value="0.02"/>
+    
+    <xacro:property name="chassis_wheelbase" value="0.324"/>
+    <xacro:property name="chassis_wheeltrack" value="0.296"/>
+    <xacro:property name="chassis_mass" value="20.5"/>
+
+    <xacro:property name="wheel_mass" value="0.1"/>
+    <xacro:property name="wheel_radius" value="0.03075"/>
+    <xacro:property name="wheel_width" value="0.035"/>
+    
+    <xacro:property name="tire_int_radius" value="0.03075"/>
+    <xacro:property name="tire_ext_radius" value="0.04475"/>
+    <xacro:property name="tire_width" value="0.039"/>
+
+    <!-- center to front hub -->
+    <xacro:property name="wheel_front_right_x" value="0.134"/>      
+    <xacro:property name="wheel_front_right_y" value="-0.0855"/>
+    
+    <!-- center to back hub -->
+    <xacro:property name="wheel_rear_right_x" value="-0.136"/>
+    <xacro:property name="wheel_rear_right_y" value="-0.0855"/>
+    
+    <xacro:property name="wheel_hub_to_pivot_offset" value="0.007"/>
+
+    <xacro:property name="wheel_z" value="0.016"/>
+
+    <xacro:property name="camera_length" value="0.071"/>
+    <xacro:property name="camera_height" value="0.031"/>
+    <xacro:property name="camera_width" value="0.024"/>
+    <xacro:property name="camera_x" value="0.134"/>
+    <xacro:property name="camera_y" value="0.0"/>
+    <xacro:property name="camera_z" value="0.07"/>
+    
+
+    <!-- ************ Materials ************ -->
+    <material name="blue">
+        <color rgba="0.0 0.0 0.8 1.0"/>
+    </material>
+    
+    <material name="chassis_mat">
+        <color rgba="0.3 0.3 0.3 1.0"/>
+    </material>
+
+    <material name="wheel_mat">
+        <color rgba="0.1 0.1 0.1 1.0"/>
+    </material>
+
+
+    <!-- ************ Colin Assembly ************ -->
+    
+    <!-- Base Link -->
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="0.01 0.01 0.01"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+    </link>
+
+    <gazebo reference="base_link">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <!-- Chassis -->
+    <link name="chassis">
+        <visual>
+            <origin xyz="0 0 0" 
+                    rpy="0 0 0"/>
+            <geometry>
+                <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+                <material name="blue"/>
+            </geometry>
+        </visual>
+
+        <collision>
+            <origin xyz="0 0 0" 
+                    rpy="0 0 0"/>
+            <geometry>
+                <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+                <material name="chassis_mat"/>
+            </geometry>
+        </collision>
+
+        <inertial>
+            <mass value="${chassis_mass}"/>
+            <inertia ixx="0.003881755275"
+                     ixy="0" 
+                     ixz="0"
+                     iyy="0.011310597718"
+                     iyz="0"
+                     izz="0.01243832479"/>
+        </inertial>
+    </link>
+
+    <!-- Gazebo-specific tags to define the simulate properties -->
+    <gazebo reference="chassis">
+        <material>Gazebo/Black</material>
+        <!-- friction componetns (alterar) -->
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+    </gazebo>
+
+    <joint name="base_link_to_chassis" type="fixed">
+        <!-- origin moves the reference frame of the child -->
+        <origin xyz="0 0 ${chassis_height/2}"
+                rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="chassis"/>
+    </joint>
+
+    <!-- ************ Wheel macros ************ -->
+    <!--    side = 1 -> right 
+            side = -1 -> left
+
+    -->
+    <xacro:macro name="front_wheel" params="name side">
+        <link name="${name}">
+            <visual>
+                <origin xyz="0 0 0"
+                        rpy="${side*pi/2} 0 0"/>
+                <geometry>
+                    <cylinder length="${tire_width}" radius="${tire_ext_radius}"/>
+                    <material name="wheel_mat"/>
+                </geometry>              
+            </visual>
+
+            <collision name="collision">
+                <origin xyz="0 0 0"
+                        rpy="${side*pi/2} 0 0"/>
+                <geometry>
+                    <cylinder length="${tire_width}" radius="${tire_ext_radius}"/>
+                </geometry>   
+            </collision>
+
+            <inertial>
+                <mass value="${wheel_mass}"/>
+                <inertia ixx="${(1 / 12) * wheel_mass * (3 * (tire_int_radius * tire_int_radius + tire_ext_radius * tire_ext_radius) + tire_width * tire_width)}"
+                        ixy="0" 
+                        ixz="0"
+                        iyy="0.0224048079"
+                        iyz="0"
+                        izz="${wheel_mass * (tire_int_radius * tire_int_radius + tire_ext_radius * tire_ext_radius) / 2}"/>
+            </inertial>
+        </link>
+
+        <gazebo reference="${name}">
+            <material>Gazebo/FlatBlack</material>  
+            <mu1>0.7</mu1>
+            <mu2>0.75</mu2>
+        </gazebo>
+    </xacro:macro>
+    
+    <xacro:macro name="rear_wheel" params="name side">
+        <link name="${name}">
+            <visual>
+                <origin xyz="0 0 0"
+                        rpy="${side*pi/2} 0 0"/>
+                <geometry>
+                    <cylinder length="${tire_width}" radius="${tire_ext_radius}"/>
+                    <material name="wheel_mat"/>
+                </geometry>                    
+            </visual>
+
+            <collision name="collision">
+                <origin xyz="0 0 0"
+                        rpy="${side*pi/2} 0 0"/>
+                <geometry>
+                    <cylinder length="${tire_width}" radius="${tire_ext_radius}"/>
+                </geometry>   
+            </collision>
+
+            <inertial>
+                <mass value="${wheel_mass}"/>
+                <inertia ixx="${(1 / 12) * wheel_mass * (3 * (tire_int_radius * tire_int_radius + tire_ext_radius * tire_ext_radius) + tire_width * tire_width)}"
+                        ixy="0" 
+                        ixz="0"
+                        iyy="0.0224048079"
+                        iyz="0"
+                        izz="${wheel_mass * (tire_int_radius * tire_int_radius + tire_ext_radius * tire_ext_radius) / 2}"/>
+            </inertial>
+        </link>
+
+        <gazebo reference="${name}">
+            <material>Gazebo/FlatBlack</material>  
+            <mu1>0.7</mu1>
+            <mu2>0.75</mu2>
+        </gazebo>
+    </xacro:macro>
+
+    <!-- ************ Transmission macros ************ -->
+
+    <xacro:macro name="wheel_transmission" params="name">
+        <transmission name="${name}_transmission" type="SimpleTransmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_motor">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+    </xacro:macro>
+
+    <xacro:macro name="steering_hinge_transmission" params="name">
+        <transmission name="${name}_transmission" type="SimpleTransmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_motor">
+            <hardwareInterface>EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+    </xacro:macro>
+
+    <!-- Right-Front Wheel -->
+    <xacro:front_wheel name="rf_wheel" side="1"/>
+
+    <joint name="base_link_to_rf_wheel" type="continuous">
+        <!-- origin moves the reference frame of the child -->
+        <origin xyz="${wheel_front_right_x} ${wheel_front_right_y} ${wheel_z}"
+                rpy="${pi} 0 0"/>
+        <axis xyz="0 -1 0"/>
+        <parent link="base_link"/>
+        <child link="rf_wheel"/>
+    </joint>
+
+    <!-- Left-Front Wheel -->
+    <xacro:front_wheel name="lf_wheel" side="-1"/>
+
+    <joint name="base_link_to_lf_wheel" type="continuous">
+        <!-- origin moves the reference frame of the child -->
+        <origin xyz="${wheel_front_right_x} ${-wheel_front_right_y} ${wheel_z}"
+                rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <parent link="base_link"/>
+        <child link="lf_wheel"/>
+    </joint>
+
+    <!-- Right-Rear Wheel -->
+    <xacro:rear_wheel name="rr_wheel" side="1"/>
+
+    <joint name="base_link_to_rr_wheel" type="continuous">
+        <!-- origin moves the reference frame of the child -->
+        <origin xyz="${wheel_rear_right_x} ${wheel_rear_right_y} ${wheel_z}"
+                rpy="${pi} 0 0"/>
+        <axis xyz="0 -1 0"/>
+        <parent link="base_link"/>
+        <child link="rr_wheel"/>
+    </joint>
+
+    <xacro:wheel_transmission name="base_link_to_rr_wheel"/>
+
+    <!-- Left-Rear Wheel -->
+    <xacro:rear_wheel name="lr_wheel" side="-1"/>
+
+    <joint name="base_link_to_lr_wheel" type="continuous">
+        <!-- origin moves the reference frame of the child -->
+        <origin xyz="${wheel_rear_right_x} ${-wheel_rear_right_y} ${wheel_z}"
+                rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <parent link="base_link"/>
+        <child link="lr_wheel"/>
+    </joint>
+
+    <xacro:wheel_transmission name="base_link_to_lr_wheel"/>
+
+
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/autocone_colin</robotNamespace>
+            <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+        </plugin>
+    </gazebo>
+
+
+    <!-- ************ Camera ************ -->
+    <link name="camera_link">
+        <visual>
+            <origin xyz="0 0 0" 
+                    rpy="0 0 0"/>
+
+            <geometry>
+                <box size="${camera_width} ${camera_length} ${camera_height}"/>
+            </geometry>
+        </visual>
+
+        <collision>
+            <origin xyz="0 0 0" 
+                    rpy="0 0 0"/>
+            <geometry>
+                <box size="${camera_width} ${camera_length} ${camera_height}"/>
+            </geometry>
+        </collision>
+        
+        <inertial>
+            <mass value="1e-5" />
+            <origin xyz="0 0 0" 
+                    rpy="0 0 0"/>
+            <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+        </inertial>
+    </link>
+
+    <gazebo reference="camera_link">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <joint name="base_link_to_camera" type="fixed">
+        <!-- origin moves the reference frame of the child -->
+        <origin xyz="${camera_x} ${camera_y} ${camera_z}"
+                rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="camera_link"/>
+    </joint>
+
+    <!-- Logitech C270 -->
+    <gazebo reference="camera_link">
+        <sensor type="camera" name="camera1">
+        <update_rate>30.0</update_rate>
+        <camera name="head">
+            <horizontal_fov>1,0472</horizontal_fov>
+            <image>
+            <width>800</width>
+            <height>800</height>
+            <format>R8G8B8</format>
+            </image>
+            <clip>
+            <near>0.02</near>
+            <far>300</far>
+            </clip>
+            <noise>
+            <type>gaussian</type>
+            <!-- Noise is sampled independently per pixel on each frame.
+                That pixel's noise value is added to each of its color
+                channels, which at that point lie in the range [0,1]. -->
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+            </noise>
+        </camera>
+        <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>0.0</updateRate>
+            <cameraName>camera</cameraName>
+            <imageTopicName>image_raw</imageTopicName>
+            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+            <frameName>camera_link</frameName>
+            <hackBaseline>0.07</hackBaseline>
+            <distortionK1>0.0</distortionK1>
+            <distortionK2>0.0</distortionK2>
+            <distortionK3>0.0</distortionK3>
+            <distortionT1>0.0</distortionT1>
+            <distortionT2>0.0</distortionT2>
+        </plugin>
+        </sensor>
+    </gazebo>
+
+
+</robot>
+
