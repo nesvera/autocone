@@ -10,7 +10,7 @@ meters, radians, kilograms
 
 <robot name="autocone_colin" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <!-- ************ Constants ************ -->
+    <!-- ****************************************** Constants ****************************************** -->
     <xacro:property name="pi" value="3.14159265359"/>
 
     <!--
@@ -57,7 +57,7 @@ meters, radians, kilograms
     <xacro:property name="camera_z" value="0.07"/>
     
 
-    <!-- ************ Materials ************ -->
+    <!-- ****************************************** Materials ****************************************** -->
     <material name="blue">
         <color rgba="0.0 0.0 0.8 1.0"/>
     </material>
@@ -71,7 +71,7 @@ meters, radians, kilograms
     </material>
 
 
-    <!-- ************ Colin Assembly ************ -->
+    <!-- ****************************************** Colin Chassis ****************************************** -->
     
     <!-- Base Link -->
     <link name="base_link">
@@ -134,7 +134,7 @@ meters, radians, kilograms
         <child link="chassis"/>
     </joint>
 
-    <!-- ************ Wheel macros ************ -->
+    <!-- ****************************************** Wheel macros ****************************************** -->
     <!--    side = 1 -> right 
             side = -1 -> left
 
@@ -213,7 +213,7 @@ meters, radians, kilograms
         </gazebo>
     </xacro:macro>
 
-    <!-- ************ Transmission macros ************ -->
+    <!-- ****************************************** Transmission macros ****************************************** -->
 
     <xacro:macro name="wheel_transmission" params="name">
         <transmission name="${name}_transmission" type="SimpleTransmission">
@@ -241,28 +241,28 @@ meters, radians, kilograms
         </transmission>
     </xacro:macro>
 
-    <!-- Right-Front Wheel -->
-    <xacro:front_wheel name="rf_wheel" side="1"/>
+    <!-- Front-Right Wheel -->
+    <xacro:front_wheel name="fr_wheel" side="1"/>
 
-    <joint name="base_link_to_rf_wheel" type="continuous">
+    <joint name="base_link_to_fr_wheel" type="continuous">
         <!-- origin moves the reference frame of the child -->
         <origin xyz="${wheel_front_right_x} ${wheel_front_right_y} ${wheel_z}"
                 rpy="${pi} 0 0"/>
         <axis xyz="0 -1 0"/>
         <parent link="base_link"/>
-        <child link="rf_wheel"/>
+        <child link="fr_wheel"/>
     </joint>
 
-    <!-- Left-Front Wheel -->
-    <xacro:front_wheel name="lf_wheel" side="-1"/>
+    <!-- Front-Left Wheel -->
+    <xacro:front_wheel name="fl_wheel" side="-1"/>
 
-    <joint name="base_link_to_lf_wheel" type="continuous">
+    <joint name="base_link_to_fl_wheel" type="continuous">
         <!-- origin moves the reference frame of the child -->
         <origin xyz="${wheel_front_right_x} ${-wheel_front_right_y} ${wheel_z}"
                 rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
         <parent link="base_link"/>
-        <child link="lf_wheel"/>
+        <child link="fl_wheel"/>
     </joint>
 
     <!-- Right-Rear Wheel -->
@@ -280,18 +280,18 @@ meters, radians, kilograms
     <xacro:wheel_transmission name="base_link_to_rr_wheel"/>
 
     <!-- Left-Rear Wheel -->
-    <xacro:rear_wheel name="lr_wheel" side="-1"/>
+    <xacro:rear_wheel name="rl_wheel" side="-1"/>
 
-    <joint name="base_link_to_lr_wheel" type="continuous">
+    <joint name="base_link_to_rl_wheel" type="continuous">
         <!-- origin moves the reference frame of the child -->
         <origin xyz="${wheel_rear_right_x} ${-wheel_rear_right_y} ${wheel_z}"
                 rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
         <parent link="base_link"/>
-        <child link="lr_wheel"/>
+        <child link="rl_wheel"/>
     </joint>
 
-    <xacro:wheel_transmission name="base_link_to_lr_wheel"/>
+    <xacro:wheel_transmission name="base_link_to_rl_wheel"/>
 
 
     <gazebo>
@@ -302,7 +302,7 @@ meters, radians, kilograms
     </gazebo>
 
 
-    <!-- ************ Camera ************ -->
+    <!-- ****************************************** Camera ****************************************** -->
     <link name="camera_link">
         <visual>
             <origin xyz="0 0 0" 
