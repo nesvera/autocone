@@ -36,12 +36,25 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<robot name="em_3905" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <!-- Degree-to-radian conversions -->
-  <xacro:property name="degrees_45" value="0.785398163"/>
-  <xacro:property name="degrees_90" value="1.57079633"/>
+<robot name="colin_2" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <!-- ****************************************** Constants ****************************************** -->
+    <xacro:property name="pi" value="3.14159265359"/>
 
-  <!-- chassis_length is measured along the x axis, chassis_width
+    <!--
+        chassis_length along the x axis (+x = front)
+        chassis_width  along the y axis (+y = left)
+        chassis_height along the z axis (+z = up)
+
+        chassis_wheelbase along the x axis (distance between front and rear wheels)
+        chassis_wheeltrack along the y axis (distance between left and right wheels)
+    -->
+
+    <!-- Degree-to-radian conversions -->
+    <xacro:property name="degrees_45" value="0.785398163"/>
+    <xacro:property name="degrees_90" value="1.57079633"/>
+
+    <!-- chassis_length is measured along the x axis, chassis_width
         along the y axis, and chassis_height along the z axis. -->
     <xacro:property name="chassis_length" value="0.370"/>
     <xacro:property name="chassis_width" value="0.10"/>
@@ -88,38 +101,50 @@ limitations under the License.
         437.817 N/m. -->
     <xacro:property name="shock_eff_limit" value="12.5106"/>
     <xacro:property name="shock_vel_limit" value="1000"/>
-  <!-- The specifications for a Titan(R) 550 motor could not be found, so the
-       stall torque of a Mabuchi Motor(R) RS-550VC-7525 motor was used instead.
 
-       num_spur_gear_teeth = 68
-       num_pinion_gear_teeth = 19
-       final_gear_ratio = (num_spur_gear_teeth / num_pinion_gear_teeth) *
-         5.22 = 18.68
-       stall_torque = 0.549 N m
-       axle_eff_limit = ((2 * stall_torque) * final_gear_ratio) / 4 =
-         5.12766 N m
+    <!-- The specifications for a Titan(R) 550 motor could not be found, so the
+        stall torque of a Mabuchi Motor(R) RS-550VC-7525 motor was used instead.
 
-       max_speed = 40 mph (30+ mph) = 17.8816 m/s
-       axle_vel_limit = (2 * pi) * (max_speed / (pi * tire_dia)) =
-         244.8696 rad/s -->
-  <xacro:property name="axle_eff_limit" value="5.12766"/>
-  <xacro:property name="axle_vel_limit" value="244.8696"/>
+        num_spur_gear_teeth = 68
+        num_pinion_gear_teeth = 19
+        final_gear_ratio = (num_spur_gear_teeth / num_pinion_gear_teeth) *
+            5.22 = 18.68
+        stall_torque = 0.549 N m
+        axle_eff_limit = ((2 * stall_torque) * final_gear_ratio) / 4 =
+            5.12766 N m
 
-  <!-- These constants are used to simulate a Traxxas 2056 servo operated at
-       6 V. servo_stall_torque is measured in N m. servo_no_load_speed is
-       measured in rad/s. -->
-  <xacro:property name="servo_stall_torque" value="0.5649"/>
-  <xacro:property name="servo_no_load_speed" value="4.553"/>
+        max_speed = 40 mph (30+ mph) = 17.8816 m/s
+        axle_vel_limit = (2 * pi) * (max_speed / (pi * tire_dia)) =
+            244.8696 rad/s -->
+    <xacro:property name="axle_eff_limit" value="5.12766"/>
+    <xacro:property name="axle_vel_limit" value="244.8696"/>
 
-  <material name="battery_mat">
-    <color rgba="0 0 1 1"/>
-  </material>
-  <material name="chassis_mat">
-    <color rgba="0.5 0.5 0.5 1"/>
-  </material>
-  <material name="tire_mat">
-    <color rgba="0 0 0 1"/>
-  </material>
+    <!-- These constants are used to simulate a Traxxas 2056 servo operated at
+        6 V. servo_stall_torque is measured in N m. servo_no_load_speed is
+        measured in rad/s. -->
+    <xacro:property name="servo_stall_torque" value="0.5649"/>
+    <xacro:property name="servo_no_load_speed" value="4.553"/>
+
+    <!-- -->
+    <xacro:property name="camera_length" value="0.071"/>
+    <xacro:property name="camera_height" value="0.031"/>
+    <xacro:property name="camera_width" value="0.024"/>
+    <xacro:property name="camera_x" value="0.134"/>
+    <xacro:property name="camera_y" value="0.0"/>
+    <xacro:property name="camera_z" value="0.07"/>
+
+    <material name="battery_mat">
+        <color rgba="0 0 1 1"/>
+    </material>
+    <material name="chassis_mat">
+        <color rgba="0.5 0.5 0.5 1"/>
+    </material>
+    <material name="tire_mat">
+        <color rgba="0 0 0 1"/>
+    </material>
+     <material name="bb_mat">
+        <color rgba="0 1 0 0.1"/>
+    </material>
 
   <!-- Null inertial element. This is needed to make the model work with
        Gazebo. -->
@@ -296,7 +321,7 @@ limitations under the License.
     </link>
 
     <gazebo reference="${lr_prefix}_${fr_prefix}_wheel">
-      <material>Gazebo/Black</material>
+      <material>Gazebo/FlatBlack</material>
     </gazebo>
   </xacro:macro>
 
@@ -362,7 +387,7 @@ limitations under the License.
   <!-- Chassis -->
   <link name="chassis">
     <visual>
-      <origin xyz="0 0 ${-chassis_height / 2}"/>
+      <origin xyz="0 0 ${chassis_height/2}"/>
       <geometry>
         <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
       </geometry>
@@ -370,7 +395,7 @@ limitations under the License.
     </visual>
 
     <collision>
-      <origin xyz="0 0 ${-chassis_height / 2}"/>
+      <origin xyz="0 0 ${chassis_height/2}"/>
       <geometry>
         <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
       </geometry>
@@ -379,11 +404,11 @@ limitations under the License.
     <xacro:solid_cuboid_inertial
         width="${chassis_length}" depth="${chassis_width}"
         height="${chassis_height}" mass="${chassis_mass}">
-      <origin xyz="0 0 ${-chassis_height / 2}"/>
+      <origin xyz="0 0 ${chassis_height/2}"/>
     </xacro:solid_cuboid_inertial>
   </link>
   <gazebo reference="chassis">
-    <material>Gazebo/Grey</material>
+    <material>Gazebo/Black</material>
   </gazebo>
 
   <joint name="base_link_to_chassis" type="fixed">
@@ -408,6 +433,23 @@ limitations under the License.
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
   </gazebo>
+
+  <!-- 
+    <link name="bb">
+        <visual>
+            <origin xyz="0 0 0.016"/>
+            <geometry>
+                <box size="0.370 0.2495 0.082"/>
+            </geometry>
+            <material name="bb_mat"/>
+        </visual>
+    </link>
+
+    <joint name="bb_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="bb"/>
+    </joint>
+    -->
 
 <!-- ****************************************** Camera ****************************************** -->
     <link name="camera_link">
