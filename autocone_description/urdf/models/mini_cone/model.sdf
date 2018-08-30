@@ -3,7 +3,7 @@
   <model name="mini_cone">
     <pose>0 0 0 0 0 0</pose>
     <static>true</static>
-
+  
     <link name="link">
       <collision name="collision">
         <geometry>
@@ -11,6 +11,8 @@
             <uri>model://autocone_description/urdf/mini_cone.dae</uri>
           </mesh>
         </geometry>
+
+        <!--
         <surface>
           <contact>
             <ode>
@@ -25,6 +27,7 @@
             </ode>
           </friction>
         </surface>
+      -->
       </collision>
 
       <visual name="visual">
