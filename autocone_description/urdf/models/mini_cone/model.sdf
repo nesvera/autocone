@@ -11,6 +11,11 @@
             <uri>model://autocone_description/urdf/mini_cone.dae</uri>
           </mesh>
         </geometry>
+        <surface>
+            <contact>
+              <collide_without_contact>true</collide_without_contact>
+            </contact>
+          </surface>
 
         <!--
         <surface>

@@ -11,6 +11,8 @@ from gazebo_msgs.srv import (
 
 from gazebo_msgs.msg import (
     ModelState,
+    ContactsState,
+    ContactState,
 )
 
 from std_msgs.msg import String
@@ -26,10 +28,6 @@ class TrainControl:
 
     def __init__(self):
 
-        self.track_width = 1.0
-
-        self.up_vector = np.array([0, 0, 1])
-        
         # Path to the models
         self.cone_model_path = rospkg.RosPack().get_path('autocone_description') + "/urdf/models/mini_cone/model.sdf"
         self.cone_file = None
@@ -45,6 +43,16 @@ class TrainControl:
         # Models identifiers
         self.cone_count = 0
 
+        self.track_width = 1.0                          # distance between two cones
+        self.up_vector = np.array([0, 0, 1])            # vector pointing up
+
+        # init node
+        rospy.init_node('train_control', anonymous=True)
+
+        # Subscribers
+        rospy.Subscriber("/bumper_sensor", ContactsState, self._bumper_callback)
+
+        # Services
         self.spawn_srv = rospy.ServiceProxy("gazebo/spawn_sdf_model", SpawnModel, persistent=True)
         self.world_properties_srv = rospy.ServiceProxy("gazebo/get_world_properties", GetWorldProperties, persistent=True)
         self.delete_srv = rospy.ServiceProxy("gazebo/delete_model", DeleteModel, persistent=True)
@@ -177,7 +185,7 @@ class TrainControl:
         ang_inc = 0.1
         theta = 0
 
-        while theta < 2*np.pi:
+        while theta < 2*math.pi:
 
             x = amplitude*math.cos(theta)
             y = amplitude*math.sin(theta) + amplitude
@@ -214,12 +222,32 @@ class TrainControl:
             time.sleep(0.1)
 
 
+    # callback listening for collision
+    def _bumper_callback(self, data):
+        
+        '''
+        # Check if hit a cone
+        states = data.states[0]
+        collision_name = states.collision1_name
+        
+        if "cone" in collision_name:
+            self.collision = True
+            print("bateeeeeu")
+        '''
+
+        # Check if hit something
+        states = data.states
+
+        if len(states) > 0:
+            self.collision = True      
+            print("bateeeeeu")
+
 
 if __name__ == '__main__':
 
-    rospy.init_node('train_control', anonymous=True)
-
     b = TrainControl()
+
+    raw_input()
 
     b.generate_track()
 
