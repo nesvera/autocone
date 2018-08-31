@@ -20,10 +20,15 @@ from geometry_msgs.msg import Pose
 
 import math
 import time
+import numpy as np
 
 class TrainControl:
 
     def __init__(self):
+
+        self.track_width = 1.0
+
+        self.up_vector = np.array([0, 0, 1])
         
         # Path to the models
         self.cone_model_path = rospkg.RosPack().get_path('autocone_description') + "/urdf/models/mini_cone/model.sdf"
@@ -147,6 +152,10 @@ class TrainControl:
                 self.move_model(name, x, y)
                 x += 1
 
+                if x % 10 == 0:
+                    y += 1
+                    x = 0
+
                 time.sleep(0.1) 
 
         except rospy.ServiceException, e:
@@ -159,7 +168,50 @@ class TrainControl:
     def unpause_physics(self):
         self.unpause_physics_srv()
 
-    
+    def generate_track(self):
+
+        # Generate track
+        self.track_points = list()
+
+        amplitude = 5
+        ang_inc = 0.1
+        theta = 0
+
+        while theta < 2*np.pi:
+
+            x = amplitude*math.cos(theta)
+            y = amplitude*math.sin(theta) + amplitude
+
+            self.track_points.append(np.array((x,y)))
+
+            theta += ang_inc
+
+
+        # Place cones
+        for i in range(len(self.track_points)):
+
+            # get two points
+            if i < len(self.track_points)-1:
+                p1 = np.array([self.track_points[i][0], self.track_points[i][1], 0])
+                p2 = np.array([self.track_points[i+1][0], self.track_points[i+1][1], 0])
+
+            else:
+                p1 = np.array([self.track_points[i][0], self.track_points[i][1], 0])
+                p2 = np.array([self.track_points[0][0], self.track_points[0][1], 0])
+
+            # calculate cross product
+            forward_vector = p2-p1 
+            right_vector = np.cross(forward_vector, self.up_vector)
+            
+            cone1 = p1 + (self.track_width/2.0)*right_vector
+            cone2 = p1 - (self.track_width/2.0)*right_vector
+
+            # change cone position
+            self.spawn_cone(cone1[0], cone1[1])
+            self.spawn_cone(cone2[0], cone2[1])
+
+            #print(str(cone1[0]) + "," + str(cone1[1]) + "  -  " + str(cone2[0]) + "," + str(cone2[1]))
+            time.sleep(0.1)
 
 
 
@@ -169,6 +221,10 @@ if __name__ == '__main__':
 
     b = TrainControl()
 
+    b.generate_track()
+
+    exit(1)
+
     b.pause_physics()
 
     a = 1
@@ -176,7 +232,7 @@ if __name__ == '__main__':
     y = 0
     theta = 0
 
-    for i in range(10):
+    for i in range(0):
         a += 0.01
         theta += 0.1
         x = a*math.cos(theta)
@@ -185,6 +241,8 @@ if __name__ == '__main__':
         b.spawn_cone(x, y)
 
     b.unpause_physics()
+
+    print("press enter")
 
     raw_input()
 
