@@ -1,0 +1,6024 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+	<world name="default">
+		<scene>
+			<sky>
+				<clouds>
+					<speed>12</speed>
+				</clouds>
+			</sky>
+			<ambient>1.0 1.0 1.0 1.0</ambient>
+			<shadows>false</shadows>
+		</scene>
+		<!-- A ground plane -->
+		<include>
+			<uri>model://ground_plane</uri>
+			<pose>0 0 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<uri>model://sun</uri>
+		</include>
+
+		<include>
+			<name>cone_0</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 0 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_1</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 0 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_2</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 0 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_3</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 0 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_4</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 0 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_5</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 0 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_6</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 0 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_7</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 0 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_8</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 0 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_9</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 1 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_10</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 1 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_11</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 1 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_12</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 1 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_13</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 1 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_14</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 1 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_15</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 1 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_16</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 1 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_17</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 1 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_18</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 1 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_19</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 2 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_20</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 2 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_21</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 2 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_22</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 2 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_23</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 2 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_24</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 2 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_25</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 2 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_26</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 2 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_27</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 2 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_28</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 2 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_29</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 3 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_30</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 3 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_31</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 3 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_32</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 3 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_33</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 3 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_34</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 3 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_35</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 3 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_36</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 3 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_37</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 3 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_38</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 3 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_39</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 4 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_40</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 4 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_41</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 4 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_42</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 4 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_43</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 4 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_44</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 4 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_45</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 4 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_46</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 4 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_47</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 4 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_48</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 4 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_49</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 5 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_50</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 5 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_51</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 5 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_52</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 5 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_53</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 5 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_54</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 5 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_55</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 5 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_56</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 5 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_57</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 5 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_58</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 5 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_59</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 6 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_60</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 6 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_61</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 6 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_62</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 6 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_63</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 6 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_64</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 6 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_65</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 6 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_66</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 6 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_67</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 6 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_68</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 6 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_69</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 7 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_70</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 7 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_71</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 7 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_72</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 7 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_73</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 7 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_74</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 7 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_75</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 7 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_76</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 7 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_77</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 7 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_78</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 7 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_79</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 8 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_80</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 8 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_81</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 8 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_82</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 8 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_83</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 8 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_84</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 8 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_85</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 8 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_86</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 8 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_87</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 8 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_88</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 8 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_89</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 9 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_90</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 9 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_91</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 9 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_92</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 9 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_93</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 9 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_94</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 9 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_95</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 9 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_96</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 9 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_97</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 9 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_98</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 9 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_99</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 10 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_100</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 10 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_101</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 10 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_102</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 10 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_103</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 10 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_104</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 10 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_105</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 10 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_106</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 10 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_107</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 10 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_108</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 10 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_109</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 11 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_110</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 11 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_111</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 11 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_112</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 11 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_113</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 11 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_114</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 11 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_115</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 11 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_116</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 11 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_117</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 11 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_118</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 11 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_119</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 12 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_120</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 12 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_121</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 12 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_122</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 12 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_123</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 12 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_124</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 12 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_125</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 12 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_126</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 12 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_127</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 12 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_128</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 12 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_129</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 13 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_130</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 13 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_131</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 13 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_132</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 13 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_133</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 13 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_134</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 13 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_135</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 13 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_136</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 13 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_137</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 13 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_138</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 13 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_139</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 14 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_140</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 14 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_141</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 14 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_142</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 14 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_143</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 14 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_144</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 14 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_145</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 14 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_146</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 14 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_147</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 14 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_148</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 14 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_149</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 15 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_150</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 15 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_151</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 15 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_152</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 15 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_153</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 15 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_154</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 15 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_155</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 15 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_156</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 15 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_157</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 15 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_158</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 15 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_159</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 16 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_160</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 16 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_161</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 16 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_162</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 16 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_163</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 16 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_164</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 16 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_165</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 16 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_166</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 16 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_167</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 16 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_168</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 16 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_169</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 17 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_170</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 17 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_171</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 17 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_172</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 17 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_173</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 17 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_174</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 17 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_175</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 17 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_176</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 17 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_177</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 17 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_178</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 17 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_179</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 18 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_180</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 18 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_181</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 18 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_182</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 18 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_183</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 18 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_184</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 18 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_185</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 18 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_186</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 18 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_187</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 18 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_188</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 18 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_189</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 19 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_190</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 19 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_191</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 19 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_192</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 19 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_193</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 19 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_194</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 19 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_195</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 19 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_196</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 19 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_197</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 19 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_198</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 19 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_199</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 20 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_200</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 20 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_201</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 20 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_202</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 20 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_203</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 20 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_204</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 20 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_205</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 20 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_206</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 20 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_207</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 20 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_208</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 20 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_209</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 21 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_210</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 21 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_211</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 21 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_212</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 21 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_213</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 21 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_214</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 21 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_215</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 21 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_216</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 21 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_217</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 21 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_218</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 21 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_219</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 22 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_220</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 22 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_221</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 22 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_222</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 22 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_223</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 22 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_224</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 22 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_225</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 22 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_226</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 22 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_227</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 22 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_228</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 22 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_229</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 23 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_230</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 23 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_231</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 23 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_232</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 23 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_233</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 23 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_234</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 23 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_235</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 23 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_236</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 23 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_237</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 23 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_238</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 23 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_239</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 24 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_240</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 24 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_241</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 24 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_242</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 24 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_243</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 24 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_244</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 24 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_245</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 24 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_246</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 24 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_247</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 24 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_248</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 24 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_249</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 25 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_250</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 25 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_251</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 25 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_252</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 25 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_253</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 25 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_254</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 25 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_255</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 25 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_256</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 25 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_257</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 25 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_258</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 25 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_259</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 26 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_260</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 26 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_261</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 26 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_262</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 26 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_263</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 26 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_264</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 26 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_265</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 26 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_266</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 26 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_267</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 26 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_268</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 26 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_269</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 27 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_270</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 27 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_271</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 27 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_272</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 27 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_273</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 27 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_274</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 27 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_275</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 27 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_276</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 27 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_277</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 27 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_278</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 27 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_279</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 28 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_280</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 28 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_281</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 28 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_282</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 28 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_283</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 28 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_284</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 28 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_285</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 28 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_286</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 28 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_287</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 28 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_288</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 28 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_289</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 29 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_290</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 29 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_291</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 29 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_292</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 29 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_293</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 29 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_294</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 29 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_295</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 29 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_296</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 29 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_297</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 29 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_298</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 29 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_299</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 30 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_300</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 30 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_301</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 30 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_302</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 30 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_303</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 30 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_304</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 30 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_305</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 30 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_306</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 30 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_307</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 30 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_308</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 30 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_309</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 31 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_310</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 31 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_311</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 31 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_312</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 31 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_313</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 31 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_314</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 31 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_315</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 31 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_316</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 31 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_317</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 31 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_318</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 31 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_319</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 32 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_320</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 32 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_321</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 32 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_322</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 32 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_323</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 32 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_324</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 32 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_325</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 32 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_326</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 32 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_327</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 32 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_328</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 32 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_329</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 33 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_330</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 33 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_331</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 33 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_332</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 33 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_333</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 33 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_334</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 33 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_335</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 33 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_336</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 33 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_337</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 33 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_338</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 33 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_339</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 34 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_340</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 34 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_341</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 34 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_342</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 34 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_343</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 34 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_344</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 34 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_345</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 34 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_346</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 34 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_347</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 34 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_348</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 34 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_349</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 35 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_350</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 35 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_351</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 35 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_352</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 35 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_353</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 35 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_354</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 35 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_355</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 35 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_356</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 35 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_357</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 35 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_358</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 35 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_359</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 36 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_360</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 36 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_361</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 36 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_362</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 36 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_363</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 36 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_364</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 36 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_365</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 36 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_366</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 36 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_367</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 36 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_368</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 36 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_369</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 37 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_370</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 37 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_371</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 37 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_372</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 37 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_373</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 37 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_374</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 37 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_375</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 37 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_376</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 37 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_377</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 37 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_378</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 37 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_379</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 38 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_380</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 38 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_381</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 38 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_382</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 38 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_383</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 38 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_384</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 38 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_385</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 38 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_386</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 38 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_387</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 38 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_388</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 38 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_389</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 39 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_390</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 39 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_391</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 39 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_392</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 39 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_393</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 39 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_394</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 39 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_395</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 39 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_396</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 39 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_397</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 39 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_398</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 39 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_399</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 40 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_400</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 40 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_401</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 40 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_402</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 40 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_403</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 40 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_404</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 40 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_405</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 40 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_406</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 40 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_407</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 40 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_408</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 40 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_409</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 41 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_410</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 41 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_411</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 41 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_412</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 41 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_413</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 41 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_414</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 41 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_415</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 41 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_416</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 41 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_417</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 41 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_418</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 41 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_419</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 42 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_420</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 42 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_421</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 42 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_422</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 42 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_423</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 42 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_424</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 42 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_425</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 42 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_426</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 42 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_427</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 42 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_428</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 42 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_429</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 43 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_430</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 43 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_431</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 43 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_432</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 43 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_433</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 43 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_434</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 43 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_435</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 43 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_436</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 43 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_437</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 43 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_438</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 43 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_439</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 44 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_440</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 44 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_441</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 44 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_442</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 44 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_443</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 44 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_444</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 44 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_445</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 44 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_446</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 44 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_447</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 44 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_448</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 44 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_449</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 45 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_450</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 45 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_451</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 45 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_452</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 45 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_453</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 45 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_454</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 45 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_455</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 45 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_456</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 45 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_457</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 45 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_458</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 45 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_459</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 46 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_460</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 46 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_461</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 46 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_462</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 46 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_463</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 46 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_464</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 46 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_465</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 46 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_466</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 46 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_467</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 46 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_468</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 46 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_469</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 47 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_470</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 47 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_471</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 47 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_472</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 47 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_473</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 47 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_474</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 47 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_475</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 47 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_476</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 47 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_477</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 47 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_478</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 47 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_479</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 48 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_480</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 48 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_481</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 48 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_482</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 48 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_483</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 48 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_484</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 48 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_485</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 48 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_486</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 48 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_487</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 48 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_488</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 48 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_489</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 49 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_490</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 49 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_491</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 49 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_492</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 49 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_493</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 49 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_494</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 49 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_495</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 49 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_496</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 49 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_497</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 49 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_498</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 49 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_499</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 50 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_500</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 50 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_501</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 50 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_502</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 50 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_503</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 50 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_504</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 50 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_505</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 50 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_506</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 50 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_507</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 50 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_508</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 50 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_509</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 51 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_510</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 51 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_511</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 51 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_512</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 51 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_513</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 51 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_514</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 51 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_515</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 51 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_516</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 51 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_517</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 51 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_518</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 51 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_519</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 52 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_520</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 52 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_521</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 52 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_522</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 52 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_523</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 52 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_524</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 52 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_525</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 52 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_526</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 52 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_527</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 52 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_528</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 52 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_529</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 53 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_530</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 53 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_531</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 53 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_532</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 53 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_533</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 53 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_534</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 53 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_535</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 53 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_536</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 53 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_537</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 53 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_538</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 53 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_539</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 54 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_540</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 54 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_541</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 54 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_542</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 54 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_543</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 54 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_544</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 54 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_545</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 54 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_546</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 54 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_547</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 54 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_548</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 54 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_549</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 55 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_550</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 55 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_551</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 55 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_552</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 55 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_553</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 55 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_554</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 55 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_555</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 55 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_556</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 55 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_557</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 55 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_558</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 55 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_559</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 56 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_560</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 56 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_561</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 56 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_562</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 56 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_563</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 56 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_564</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 56 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_565</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 56 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_566</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 56 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_567</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 56 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_568</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 56 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_569</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 57 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_570</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 57 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_571</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 57 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_572</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 57 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_573</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 57 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_574</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 57 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_575</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 57 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_576</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 57 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_577</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 57 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_578</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 57 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_579</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 58 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_580</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 58 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_581</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 58 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_582</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 58 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_583</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 58 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_584</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 58 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_585</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 58 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_586</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 58 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_587</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 58 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_588</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 58 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_589</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 59 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_590</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 59 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_591</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 59 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_592</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 59 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_593</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 59 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_594</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 59 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_595</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 59 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_596</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 59 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_597</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 59 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_598</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 59 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_599</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 60 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_600</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 60 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_601</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 60 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_602</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 60 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_603</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 60 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_604</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 60 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_605</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 60 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_606</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 60 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_607</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 60 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_608</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 60 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_609</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 61 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_610</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 61 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_611</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 61 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_612</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 61 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_613</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 61 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_614</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 61 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_615</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 61 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_616</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 61 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_617</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 61 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_618</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 61 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_619</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 62 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_620</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 62 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_621</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 62 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_622</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 62 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_623</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 62 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_624</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 62 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_625</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 62 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_626</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 62 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_627</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 62 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_628</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 62 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_629</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 63 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_630</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 63 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_631</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 63 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_632</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 63 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_633</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 63 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_634</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 63 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_635</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 63 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_636</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 63 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_637</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 63 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_638</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 63 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_639</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 64 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_640</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 64 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_641</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 64 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_642</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 64 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_643</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 64 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_644</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 64 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_645</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 64 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_646</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 64 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_647</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 64 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_648</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 64 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_649</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 65 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_650</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 65 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_651</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 65 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_652</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 65 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_653</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 65 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_654</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 65 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_655</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 65 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_656</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 65 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_657</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 65 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_658</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 65 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_659</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 66 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_660</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 66 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_661</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 66 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_662</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 66 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_663</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 66 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_664</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 66 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_665</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 66 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_666</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 66 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_667</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 66 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_668</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 66 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_669</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 67 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_670</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 67 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_671</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 67 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_672</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 67 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_673</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 67 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_674</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 67 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_675</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 67 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_676</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 67 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_677</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 67 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_678</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 67 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_679</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 68 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_680</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 68 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_681</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 68 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_682</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 68 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_683</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 68 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_684</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 68 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_685</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 68 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_686</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 68 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_687</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 68 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_688</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 68 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_689</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 69 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_690</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 69 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_691</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 69 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_692</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 69 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_693</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 69 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_694</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 69 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_695</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 69 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_696</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 69 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_697</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 69 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_698</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 69 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_699</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 70 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_700</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 70 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_701</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 70 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_702</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 70 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_703</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 70 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_704</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 70 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_705</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 70 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_706</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 70 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_707</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 70 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_708</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 70 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_709</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 71 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_710</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 71 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_711</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 71 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_712</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 71 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_713</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 71 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_714</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 71 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_715</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 71 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_716</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 71 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_717</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 71 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_718</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 71 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_719</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 72 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_720</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 72 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_721</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 72 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_722</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 72 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_723</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 72 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_724</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 72 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_725</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 72 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_726</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 72 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_727</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 72 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_728</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 72 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_729</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 73 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_730</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 73 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_731</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 73 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_732</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 73 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_733</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 73 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_734</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 73 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_735</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 73 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_736</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 73 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_737</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 73 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_738</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 73 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_739</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 74 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_740</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 74 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_741</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 74 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_742</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 74 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_743</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 74 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_744</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 74 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_745</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 74 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_746</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 74 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_747</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 74 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_748</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 74 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_749</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 75 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_750</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 75 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_751</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 75 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_752</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 75 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_753</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 75 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_754</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 75 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_755</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 75 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_756</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 75 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_757</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 75 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_758</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 75 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_759</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 76 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_760</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 76 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_761</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 76 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_762</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 76 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_763</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 76 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_764</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 76 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_765</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 76 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_766</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 76 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_767</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 76 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_768</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 76 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_769</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 77 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_770</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 77 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_771</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 77 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_772</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 77 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_773</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 77 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_774</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 77 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_775</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 77 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_776</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 77 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_777</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 77 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_778</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 77 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_779</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 78 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_780</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 78 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_781</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 78 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_782</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 78 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_783</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 78 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_784</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 78 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_785</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 78 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_786</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 78 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_787</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 78 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_788</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 78 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_789</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 79 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_790</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 79 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_791</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 79 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_792</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 79 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_793</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 79 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_794</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 79 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_795</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 79 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_796</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 79 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_797</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 79 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_798</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 79 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_799</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 80 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_800</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 80 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_801</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 80 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_802</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 80 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_803</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 80 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_804</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 80 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_805</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 80 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_806</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 80 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_807</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 80 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_808</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 80 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_809</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 81 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_810</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 81 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_811</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 81 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_812</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 81 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_813</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 81 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_814</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 81 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_815</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 81 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_816</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 81 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_817</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 81 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_818</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 81 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_819</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 82 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_820</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 82 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_821</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 82 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_822</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 82 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_823</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 82 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_824</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 82 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_825</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 82 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_826</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 82 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_827</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 82 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_828</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 82 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_829</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 83 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_830</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 83 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_831</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 83 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_832</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 83 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_833</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 83 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_834</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 83 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_835</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 83 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_836</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 83 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_837</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 83 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_838</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 83 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_839</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 84 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_840</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 84 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_841</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 84 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_842</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 84 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_843</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 84 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_844</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 84 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_845</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 84 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_846</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 84 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_847</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 84 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_848</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 84 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_849</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 85 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_850</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 85 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_851</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 85 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_852</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 85 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_853</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 85 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_854</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 85 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_855</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 85 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_856</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 85 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_857</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 85 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_858</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 85 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_859</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 86 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_860</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 86 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_861</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 86 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_862</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 86 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_863</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 86 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_864</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 86 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_865</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 86 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_866</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 86 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_867</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 86 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_868</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 86 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_869</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 87 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_870</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 87 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_871</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 87 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_872</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 87 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_873</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 87 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_874</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 87 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_875</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 87 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_876</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 87 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_877</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 87 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_878</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 87 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_879</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 88 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_880</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 88 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_881</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 88 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_882</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 88 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_883</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 88 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_884</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 88 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_885</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 88 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_886</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 88 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_887</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 88 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_888</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 88 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_889</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 89 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_890</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 89 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_891</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 89 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_892</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 89 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_893</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 89 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_894</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 89 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_895</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 89 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_896</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 89 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_897</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 89 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_898</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 89 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_899</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 90 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_900</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 90 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_901</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 90 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_902</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 90 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_903</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 90 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_904</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 90 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_905</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 90 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_906</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 90 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_907</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 90 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_908</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 90 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_909</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 91 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_910</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 91 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_911</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 91 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_912</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 91 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_913</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 91 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_914</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 91 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_915</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 91 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_916</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 91 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_917</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 91 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_918</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 91 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_919</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 92 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_920</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 92 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_921</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 92 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_922</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 92 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_923</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 92 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_924</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 92 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_925</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 92 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_926</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 92 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_927</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 92 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_928</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 92 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_929</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 93 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_930</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 93 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_931</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 93 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_932</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 93 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_933</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 93 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_934</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 93 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_935</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 93 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_936</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 93 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_937</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 93 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_938</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 93 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_939</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 94 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_940</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 94 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_941</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 94 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_942</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 94 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_943</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 94 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_944</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 94 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_945</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 94 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_946</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 94 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_947</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 94 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_948</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 94 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_949</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 95 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_950</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 95 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_951</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 95 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_952</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 95 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_953</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 95 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_954</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 95 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_955</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 95 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_956</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 95 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_957</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 95 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_958</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 95 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_959</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 96 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_960</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 96 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_961</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 96 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_962</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 96 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_963</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 96 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_964</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 96 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_965</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 96 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_966</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 96 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_967</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 96 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_968</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 96 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_969</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 97 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_970</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 97 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_971</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 97 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_972</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 97 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_973</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 97 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_974</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 97 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_975</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 97 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_976</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 97 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_977</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 97 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_978</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 97 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_979</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 98 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_980</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 98 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_981</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 98 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_982</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 98 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_983</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 98 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_984</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 98 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_985</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 98 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_986</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 98 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_987</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 98 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_988</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 98 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_989</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 99 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_990</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>1 99 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_991</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>2 99 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_992</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>3 99 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_993</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>4 99 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_994</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>5 99 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_995</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>6 99 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_996</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>7 99 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_997</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>8 99 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_998</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>9 99 0 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>cone_999</name>
+			<uri>model://urdf/models/mini_cone</uri>
+			<pose>0 100 0 0 0 0</pose>
+		</include>
+
+	</world>
+</sdf>

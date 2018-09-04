@@ -1,0 +1,26 @@
+
+
+Track dimensions from FSAE rules:
+ - Driving path skidpad 3.0 meters (length os track)
+ - Autocross minimum track width 3.5 meters
+ - Endurance minimum track width 4.5 meters
+
+Vehicle UMSAE pbr16 dimensions:
+ - Length = 3033 mm
+ - Width = 1404 mm
+ - Wheel base = 1619 mm
+ - Front track = 1219 mm
+ - Rear track = 1118 mm
+
+ Colin dimensions:
+
+ - Length = 370 mm
+ - Width = 250 mm
+
+Proporção carro:
+ - length = 1:8.197
+ - width = 1:5.616
+
+Tamanho da pista miniatura:
+ - width real = 3.5 meters -> width miniature = 623.2 mm
+ - width real = 4.5 meters -> width miniature = 801.2 mm
