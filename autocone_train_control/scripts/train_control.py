@@ -5,7 +5,30 @@ import random
 import numpy as np
 from scipy import interpolate
 
-def random_points(length,npoints):
+from gazebo_msgs.srv import (
+    SpawnModel, 
+    GetWorldProperties, 
+    DeleteModel,
+    SetModelState,
+    GetModelState,
+)
+
+from gazebo_msgs.msg import (
+    ModelState,
+    ContactsState,
+    ContactState,
+)
+
+from std_msgs.msg import String
+from std_srvs.srv import Empty
+
+from geometry_msgs.msg import Pose
+
+import math
+import time
+import numpy as np
+
+def create_track(length,npoints):
     size = length/2
     
     end = 0
@@ -16,6 +39,7 @@ def random_points(length,npoints):
         i = 0
         k = 0
         while i<length-1:
+            print("caiu")
             a = X[-1]+random.randint(-1,1)
             b = Y[-1]+random.randint(-1,1)
             
@@ -49,9 +73,10 @@ def random_points(length,npoints):
                     if ((X[-3])**2+(Y[-3])**2)**(1/2)>2:
                         end = 1
                         i = length
+
         
     
-    
+        
 #    print("Length = ",len(X))
     
     X.append(X[1])
@@ -140,40 +165,15 @@ def random_points(length,npoints):
     
     X4.append(X4[0])
     Y4.append(Y4[0])
-    
-        
+
     points = []
     for i in range(len(X4)):
         points.append(np.array([X4[i],Y4[i]]))
     
+    print(points)
+    raw_input()
+
     return points
-    
-    
-    
-
-
-from gazebo_msgs.srv import (
-    SpawnModel, 
-    GetWorldProperties, 
-    DeleteModel,
-    SetModelState,
-    GetModelState,
-)
-
-from gazebo_msgs.msg import (
-    ModelState,
-    ContactsState,
-    ContactState,
-)
-
-from std_msgs.msg import String
-from std_srvs.srv import Empty
-
-from geometry_msgs.msg import Pose
-
-import math
-import time
-import numpy as np
 
 class TrainControl:
 
@@ -187,7 +187,7 @@ class TrainControl:
         self.qnt_runs = 100                          # number of reset of the car on a track
 
         # Path to the models
-        self.cone_model_path = rospkg.RosPack().get_path('autocone_description') + "/urdf/models/mini_cone/model.sdf"
+        #self.cone_model_path = rospkg.RosPack().get_path('autocone_description') + "/urdf/models/mini_cone/model.sdf"
         self.cone_file = None
 
         # Open and store models to spawn
@@ -371,7 +371,7 @@ class TrainControl:
     def generate_track(self):
 
         # Generate track
-        self.track_points = random_points(30,250)
+        self.track_points = create_track(30,500)
 
         # Place cones
         for i in range(len(self.track_points)):
