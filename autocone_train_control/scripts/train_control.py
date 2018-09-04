@@ -371,7 +371,7 @@ class TrainControl:
     def generate_track(self):
 
         # Generate track
-        self.track_points = random_points(30,500)
+        self.track_points = random_points(30,250)
 
         # Place cones
         for i in range(len(self.track_points)):
