@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 import rospy
 import rospkg
-import random
-import numpy as np
-from scipy import interpolate
 
 from gazebo_msgs.srv import (
     SpawnModel, 
@@ -24,61 +21,75 @@ from std_srvs.srv import Empty
 
 from geometry_msgs.msg import Pose
 
+import random
+import numpy as np
+from scipy import interpolate
 import math
 import time
-import numpy as np
 
 def create_track(length,npoints):
-    size = length/2
-    
+    size = length/2.0
+
+    aaa = 0
+
     end = 0
     while end==0:
+
         X = [0]
         Y = [0]
         
         i = 0
         k = 0
         while i<length-1:
-            print("caiu")
+            aaa += 1
+
             a = X[-1]+random.randint(-1,1)
             b = Y[-1]+random.randint(-1,1)
-            
+
             f = 0
+            
             for j in range(len(X)-1):
-                if ((X[j]-a)**2+(Y[j]-b)**2)**(1/2)<=1:
+                if((((X[j]-a)**2)+((Y[j]-b)**2))**(1/2.0))<=1:
                     f = 1
             
             if len(X)>1:
-                if ((X[-2]-a)**2+(Y[-2]-b)**2)**(1/2)<=2:
+                if(((X[-2]-a)**2+(Y[-2]-b)**2)**(1/2.0))<=2:
                     f = 1
             
             if f == 0 and abs(a)<size and abs(b)<size:
+                print(size, a, b, f, i)
                 X.append(a)
                 Y.append(b)
+
                 i=i+1
                 k = 0
-                
+            
             k=k+1
+            
             
             if k > 10:
                 del X[-1]
                 del Y[-1]
                 i = i-1
             
+            print(i)
       
-            if i>=length*0.7:
+            if i>=(length*0.7):
                 if X[1]*-1==X[-1] and Y[1]*-1==Y[-1]:
                     X.append(0)
                     Y.append(0)
-                    if ((X[-3])**2+(Y[-3])**2)**(1/2)>2:
+                    if ((X[-3])**2+(Y[-3])**2)**(1/2.0)>2:
                         end = 1
                         i = length
 
-        
-    
-        
+
+
+    print("Length = ",len(X))
+    print(X)
+    print(Y)
+
 #    print("Length = ",len(X))
-    
+
     X.append(X[1])
     Y.append(Y[1])
     #X.append(X[2])
@@ -87,7 +98,7 @@ def create_track(length,npoints):
     x = np.array(X)
     y = np.array(Y)
     tck, u = interpolate.splprep([x, y], s=0)
-    unew = np.arange(0, 1, 1/npoints)
+    unew = np.arange(0, 1, 1/float(npoints))
     out = interpolate.splev(unew, tck)
     
     X4 = []
@@ -136,7 +147,7 @@ def create_track(length,npoints):
     Y2 = []
     i = 0
     while i < 1000:
-        if ((med_X[i]-med_X[i+1])**2+(med_Y[i]-med_Y[i+1])**2)**(1/2)<0.5:
+        if ((med_X[i]-med_X[i+1])**2+(med_Y[i]-med_Y[i+1])**2)**(1/2.0)<0.5:
             X1.append(med_X[i])
             Y1.append(med_Y[i])
         else:
@@ -152,8 +163,8 @@ def create_track(length,npoints):
     X3 = []
     Y3 = []
     for i in range(len(X1)):
-        X3.append((X1[i]+X2[i])/2)
-        Y3.append((Y1[i]+Y2[i])/2)
+        X3.append((X1[i]+X2[i])/2.0)
+        Y3.append((Y1[i]+Y2[i])/2.0)
     
     
     del(X4[0])
@@ -187,7 +198,7 @@ class TrainControl:
         self.qnt_runs = 100                          # number of reset of the car on a track
 
         # Path to the models
-        #self.cone_model_path = rospkg.RosPack().get_path('autocone_description') + "/urdf/models/mini_cone/model.sdf"
+        self.cone_model_path = rospkg.RosPack().get_path('autocone_description') + "/urdf/models/mini_cone/model.sdf"
         self.cone_file = None
 
         # Open and store models to spawn
@@ -371,7 +382,7 @@ class TrainControl:
     def generate_track(self):
 
         # Generate track
-        self.track_points = create_track(30,500)
+        self.track_points = create_track(30,250)
 
         # Place cones
         for i in range(len(self.track_points)):
@@ -434,7 +445,7 @@ class TrainControl:
 
         # spawn a lot of cones
         #self.spawn_many_cones()
-        self.generate_track()
+        #self.generate_track()
         
         for track in range(self.qnt_tracks):
 
