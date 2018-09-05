@@ -28,10 +28,8 @@ import math
 import time
 
 def create_track(length,npoints):
-    size = length/2.0
-
-    aaa = 0
-
+    size = length/2.
+    
     end = 0
     while end==0:
 
@@ -49,10 +47,12 @@ def create_track(length,npoints):
             f = 0
             
             for j in range(len(X)-1):
+                if ((X[j]-a)**2+(Y[j]-b)**2)**(1/2.)<=1:
                 if((((X[j]-a)**2)+((Y[j]-b)**2))**(1/2.0))<=1:
                     f = 1
             
             if len(X)>1:
+                if ((X[-2]-a)**2+(Y[-2]-b)**2)**(1/2.)<=2:
                 if(((X[-2]-a)**2+(Y[-2]-b)**2)**(1/2.0))<=2:
                     f = 1
             
@@ -78,6 +78,7 @@ def create_track(length,npoints):
                 if X[1]*-1==X[-1] and Y[1]*-1==Y[-1]:
                     X.append(0)
                     Y.append(0)
+                    if ((X[-3])**2+(Y[-3])**2)**(1/2.)>2:
                     if ((X[-3])**2+(Y[-3])**2)**(1/2.0)>2:
                         end = 1
                         i = length
@@ -147,6 +148,7 @@ def create_track(length,npoints):
     Y2 = []
     i = 0
     while i < 1000:
+        if ((med_X[i]-med_X[i+1])**2+(med_Y[i]-med_Y[i+1])**2)**(1/2.)<0.5:
         if ((med_X[i]-med_X[i+1])**2+(med_Y[i]-med_Y[i+1])**2)**(1/2.0)<0.5:
             X1.append(med_X[i])
             Y1.append(med_Y[i])
@@ -163,6 +165,8 @@ def create_track(length,npoints):
     X3 = []
     Y3 = []
     for i in range(len(X1)):
+        X3.append((X1[i]+X2[i])/2.)
+        Y3.append((Y1[i]+Y2[i])/2.)
         X3.append((X1[i]+X2[i])/2.0)
         Y3.append((Y1[i]+Y2[i])/2.0)
     
@@ -401,8 +405,8 @@ class TrainControl:
             forward_vector = forward_vector / np.linalg.norm(forward_vector)
             right_vector = np.cross(forward_vector, self.up_vector)
             
-            cone1 = p1 + (self.track_width/2.0)*right_vector
-            cone2 = p1 - (self.track_width/2.0)*right_vector
+            cone1 = p1 + (self.track_width/2.)*right_vector
+            cone2 = p1 - (self.track_width/2.)*right_vector
 
             # change cone position
             self.spawn_cone(cone1[0], cone1[1])
