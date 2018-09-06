@@ -24,6 +24,8 @@ from geometry_msgs.msg import Pose
 import random
 import numpy as np
 from scipy import interpolate
+import matplotlib.pyplot as plt
+
 import math
 import time
 
@@ -39,25 +41,19 @@ def create_track(length,npoints):
         i = 0
         k = 0
         while i<length-1:
-            aaa += 1
-
             a = X[-1]+random.randint(-1,1)
             b = Y[-1]+random.randint(-1,1)
 
             f = 0
-            
             for j in range(len(X)-1):
                 if ((X[j]-a)**2+(Y[j]-b)**2)**(1/2.)<=1:
-                if((((X[j]-a)**2)+((Y[j]-b)**2))**(1/2.0))<=1:
                     f = 1
             
             if len(X)>1:
                 if ((X[-2]-a)**2+(Y[-2]-b)**2)**(1/2.)<=2:
-                if(((X[-2]-a)**2+(Y[-2]-b)**2)**(1/2.0))<=2:
                     f = 1
             
             if f == 0 and abs(a)<size and abs(b)<size:
-                print(size, a, b, f, i)
                 X.append(a)
                 Y.append(b)
 
@@ -65,36 +61,23 @@ def create_track(length,npoints):
                 k = 0
             
             k=k+1
-            
-            
             if k > 10:
                 del X[-1]
                 del Y[-1]
                 i = i-1
-            
-            print(i)
       
             if i>=(length*0.7):
                 if X[1]*-1==X[-1] and Y[1]*-1==Y[-1]:
                     X.append(0)
                     Y.append(0)
                     if ((X[-3])**2+(Y[-3])**2)**(1/2.)>2:
-                    if ((X[-3])**2+(Y[-3])**2)**(1/2.0)>2:
                         end = 1
                         i = length
-
-
-
-    print("Length = ",len(X))
-    print(X)
-    print(Y)
 
 #    print("Length = ",len(X))
 
     X.append(X[1])
     Y.append(Y[1])
-    #X.append(X[2])
-    #Y.append(Y[2])
     
     x = np.array(X)
     y = np.array(Y)
@@ -149,7 +132,6 @@ def create_track(length,npoints):
     i = 0
     while i < 1000:
         if ((med_X[i]-med_X[i+1])**2+(med_Y[i]-med_Y[i+1])**2)**(1/2.)<0.5:
-        if ((med_X[i]-med_X[i+1])**2+(med_Y[i]-med_Y[i+1])**2)**(1/2.0)<0.5:
             X1.append(med_X[i])
             Y1.append(med_Y[i])
         else:
@@ -167,10 +149,7 @@ def create_track(length,npoints):
     for i in range(len(X1)):
         X3.append((X1[i]+X2[i])/2.)
         Y3.append((Y1[i]+Y2[i])/2.)
-        X3.append((X1[i]+X2[i])/2.0)
-        Y3.append((Y1[i]+Y2[i])/2.0)
-    
-    
+   
     del(X4[0])
     del(Y4[0])
     
@@ -178,15 +157,19 @@ def create_track(length,npoints):
         X4.append(X3[i])
         Y4.append(Y3[i])
     
-    X4.append(X4[0])
-    Y4.append(Y4[0])
-
+    X4.append((X4[-1]+X4[0])/2.)
+    Y4.append((Y4[-1]+Y4[0])/2.)
+    
+    plt.plot(X4,Y4,'-',0,0,'.')
+    plt.axis('square')
+    plt.grid()
+    plt.show()
+    
     points = []
     for i in range(len(X4)):
         points.append(np.array([X4[i],Y4[i]]))
     
-    print(points)
-    raw_input()
+#    print(points)
 
     return points
 
