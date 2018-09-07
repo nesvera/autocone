@@ -9,8 +9,8 @@ from cv_bridge import CvBridge, CvBridgeError
 
 from sensor_msgs.msg import Image
 
-LOWER_COLOR = np.array([15, 150, 150])
-UPPER_COLOR = np.array([30, 255, 255])
+LOWER_COLOR = np.array([0, 150, 150])
+UPPER_COLOR = np.array([15, 255, 255])
 
 # Gets image from the gazebo simulation camera and apply opencv transformations
 # to extract the traffic cones information
