@@ -29,6 +29,9 @@ import matplotlib.pyplot as plt
 import math
 import time
 
+DEBUG = False
+DEBUG_PLOT = False
+
 def create_track(length,npoints):
     size = length/2.
     
@@ -160,10 +163,11 @@ def create_track(length,npoints):
     X4.append((X4[-1]+X4[0])/2.)
     Y4.append((Y4[-1]+Y4[0])/2.)
     
-    plt.plot(X4,Y4,'-',0,0,'.')
-    plt.axis('square')
-    plt.grid()
-    plt.show()
+    if DEBUG_PLOT == True:
+        plt.plot(X4,Y4,'-',0,0,'.')
+        plt.axis('square')
+        plt.grid()
+        plt.show()
     
     points = []
     for i in range(len(X4)):
@@ -432,7 +436,7 @@ class TrainControl:
 
         # spawn a lot of cones
         #self.spawn_many_cones()
-        #self.generate_track()
+        self.generate_track()
         
         for track in range(self.qnt_tracks):
 
