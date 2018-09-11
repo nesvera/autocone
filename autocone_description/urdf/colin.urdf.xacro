@@ -51,7 +51,7 @@ limitations under the License.
     -->
 
     <!-- Bumpper sensor Properties -->
-    <xacro:property name="bumper_update_rate" value="30.0"/>
+    <xacro:property name="bumper_update_rate" value="10.0"/>
 
     <!-- Camera Properties -->
     <xacro:property name="cam_update_rate" value="30.0"/>

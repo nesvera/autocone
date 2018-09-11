@@ -455,7 +455,7 @@ class TrainControl:
         self.qnt_cones = 500
 
         self.qnt_tracks = 1                         # number of tracks to train
-        self.qnt_runs = 100                          # number of reset of the car on a track
+        self.qnt_runs = 1000                          # number of reset of the car on a track
 
         # Cone model
         self.cone_model_path = rospkg.RosPack().get_path('autocone_description') + "/urdf/models/mini_cone/model.sdf"
@@ -627,7 +627,8 @@ class TrainControl:
 
             cone_name = self.cone_name_list[i]
 
-            self.gazebo_interface.move_model(cone_name, cone_pose)
+            #self.gazebo_interface.move_model(cone_name, cone_pose)
+            self.gazebo_interface.spawn_model(self.cone_file, cone_name, cone_pose)
 
             last_cone_placed = i
 
@@ -653,7 +654,7 @@ class TrainControl:
             self.gazebo_interface.pause_physics()
             self.collision = True  
             self.enable_drive_flag = False    
-            #time.sleep(0.5)
+            time.sleep(0.5)
             print("bateeeeeu")
 
     def spawn_many_cones(self):
@@ -671,7 +672,7 @@ class TrainControl:
             self.cone_name_list.append(model_name)
 
             try:            
-                self.gazebo_interface.spawn_model(self.cone_file, model_name, cone_pose)
+                #self.gazebo_interface.spawn_model(self.cone_file, model_name, cone_pose)
                 pass
                 
             except rospy.ServiceException, e:
