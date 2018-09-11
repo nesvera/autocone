@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import rospy
 import rospkg
+import getpass
 
 from gazebo_msgs.msg import (
     ContactsState,
@@ -43,6 +44,7 @@ class Datalogger:
         self.controller = None
 
     def _image_calback(self, data):
+        print('image callback')
         cv2_img = None
 
         try:
@@ -78,7 +80,8 @@ class Datalogger:
 
         while not rospy.is_shutdown():
             time = self.header
-            cv2.imwrite('/home/nesvera/Documents/train_pic/'+str(time)+'.jpg', self.camera_image)
+            username = getpass.getuser()
+            cv2.imwrite('/home/'+ username + '/Documents/train_pic/'+str(time)+'.jpg', cv2.resize(self.camera_image, None, fx=0.3, fy=0.3, interpolation=cv2.INTER_CUBIC))
 
             self.rate.sleep()
 
