@@ -76,7 +76,7 @@ class Datalogger:
 
     def routine(self):
 
-        while True:
+        while not rospy.is_shutdown():
             time = self.header
             cv2.imwrite('/home/nesvera/Documents/train_pic/'+str(time)+'.jpg', self.camera_image)
 

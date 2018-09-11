@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from __future__ import print_function
+
 import rospy
 import rospkg
 
@@ -28,6 +32,7 @@ import matplotlib.pyplot as plt
 
 import math
 import time
+import sys
 
 DEBUG = False
 DEBUG_PLOT = True
@@ -64,8 +69,6 @@ class Track:
         self.path_area = 30
         self.path_max_points = 250
 
-        self.new_track()
-
     def new_track(self):
         
         # generate a new path
@@ -100,9 +103,6 @@ class Track:
         # loop through each edge of the track to space the cones 
         left_cone_list = self.space_points(left_edge_points)
         right_cone_list = self.space_points(right_edge_points)
-
-        print("Antes " + str(len(left_edge_points)))
-        print("Depois" + str(len(left_cone_list)))
 
         if DEBUG_PLOT == True:
             fig1, axes = plt.subplots(nrows=2, ncols=2)
@@ -153,9 +153,26 @@ class Track:
 
             plt.show()
 
+        # Place both cone_list in one list
+        cone_list = []
+
+        for i in left_cone_list:
+            cone_list.append(i)
+
+        for i in right_cone_list:
+            cone_list.append(i)
 
         del(left_edge_points)
         del(right_edge_points)
+        del(left_cone_list)
+        del(right_cone_list)
+
+        # Create a list of np to path
+        np_path_points = []
+        for i in path_points:
+            np_path_points.append([i[0], i[1]])
+
+        return np_path_points, cone_list
 
     # Move/Remove cones to corect the distance between cones in one side
     # of the track
@@ -357,43 +374,7 @@ class Track:
 class GazeboInterface:
 
     def __init__(self):
-
-        self.enable_drive_flag = False
-
-        self.vehicle_name = "ackermann_vehicle"
-
-        self.qnt_tracks = 1                         # number of tracks to train
-        self.qnt_runs = 100                          # number of reset of the car on a track
-
-        # Path to the models
-        self.cone_model_path = rospkg.RosPack().get_path('autocone_description') + "/urdf/models/mini_cone/model.sdf"
-        self.cone_file = None
-
-        # Open and store models to spawn
-        try:
-            f = open(self.cone_model_path, 'r')
-            self.cone_file = f.read()
-
-        except:
-            print("Could not read file: " + self.cone_model_path)
-
-        # Models identifiers
-        self.cone_count = 0
-        self.cone_list = list()
-
-        # Position 
-        self.point_list = list()
-        self.point_respawn_index = 1                     # index 
-
-        self.track_width = 1.0                          # distance between two cones
-        self.up_vector = np.array([0, 0, 1])            # vector pointing up
-
-        # init node
-        rospy.init_node('train_control', anonymous=True)
-
-        # Subscribers
-        rospy.Subscriber("/bumper_sensor", ContactsState, self._bumper_callback, queue_size=1)
-
+        
         # Services
         self.spawn_srv = rospy.ServiceProxy("gazebo/spawn_sdf_model", SpawnModel, persistent=True)
         self.world_properties_srv = rospy.ServiceProxy("gazebo/get_world_properties", GetWorldProperties, persistent=True)
@@ -403,23 +384,15 @@ class GazeboInterface:
         self.set_model_state_srv = rospy.ServiceProxy("gazebo/set_model_state", SetModelState, persistent=True)
         self.get_model_state_srv = rospy.ServiceProxy("gazebo/get_model_state", GetModelState, persistent=True)
 
-    def spawn_cone(self, posX, posY):
+    def spawn_model(self, model_file, model_name,  model_pose):
         
         try:            
-            cone_pose = Pose()
-            cone_pose.position.x = posX
-            cone_pose.position.y = posY
-            cone_pose.position.z = 0
-
-            model_name = "cone_" + str(self.cone_count)
-            self.spawn_srv(model_name, self.cone_file, "default", cone_pose, "world")
-            
-            self.cone_count += 1
+            self.spawn_srv(model_name, model_file, "default", model_pose, "world")
 
         except rospy.ServiceException, e:
             print("Error: " + e)
 
-    def reset_world(self):
+    def get_world_properties(self):
 
         # Service to return models spawned on gazebo world
         rospy.wait_for_service("gazebo/get_world_properties")
@@ -434,201 +407,42 @@ class GazeboInterface:
         except rospy.ServiceException, e:
             print("Error: " + e)
 
-        # Remove cones and car
-        try:
-            for name in model_names:
+        return model_names
 
-                # Dont remove ground_plane
-                if "ground_plane" in name or "ackermann_vehicle" in name:
-                    continue
-                    
-                # Call delete
-                resp_delete = self.delete_srv(name)
+    def move_model(self, model_name, model_pose):
 
-                if resp_delete.success == False:
-                    print("Error trying to delete cone")
-
-        except rospy.ServiceException, e:
-            print("Error: " + e)
-
-    def move_model(self, model_name, posX, posY, yaw):
         model = ModelState()
-        model.pose.position.x = posX
-        model.pose.position.y = posY
-        model.pose.position.z = 0
-        model.pose.orientation.x = 0
-        model.pose.orientation.y = 0
-        model.pose.orientation.z = yaw
+        model.pose = model_pose
         model.model_name = model_name
 
         rospy.wait_for_service("gazebo/set_model_state")
 
-        while True:
+        # move
+        try:
+            self.set_model_state_srv(model)
 
-            # Try to move
-            try:
-                self.set_model_state_srv(model)
-
-            except rospy.ServiceException, e:
-                print("Error: " + e)
-
-            # Check if it has moved
-            prop_position = self.get_model_position(model_name=model_name)
-            if prop_position[0] == posX and prop_position[1] == posY:
-                break   
+        except rospy.ServiceException, e:
+            print("Error: " + e)
 
     def get_model_position(self, model_name):
-        
-        # Get cones position
+        rospy.wait_for_service("gazebo/get_model_state")
+
+        # Get model position
         try:
-            rospy.wait_for_service("gazebo/get_model_state")
-            cone_position = self.get_model_state_srv(model_name=model_name).pose.position          
+            model_position = self.get_model_state_srv(model_name=model_name).pose.position          
 
         except rospy.ServiceException, e:
             print("Error: " + e)
 
-        np_cone_position = np.array([cone_position.x, cone_position.y])
-        return np_cone_position
+        np_position = np.array([model_position.x, model_position.y])
 
-    def test_move(self):
-
-        self.pause_physics_srv()
-
-        x = 0
-        y = 0
-
-        # Service to return models spawned on gazebo world
-        rospy.wait_for_service("gazebo/get_world_properties")
-        
-        model_names = None
-
-        # Read models
-        try:
-            resp_properties = self.world_properties_srv()
-            model_names = resp_properties.model_names
-
-        except rospy.ServiceException, e:
-            print("Error: " + e)
-
-        try:
-            for name in model_names:
-
-                # Dont remove ground_plane
-                if "ground_plane" in name or "ackermann_vehicle" in name:
-                    print("achou")
-                    continue
-
-                print(name)               
-
-                self.move_model(name, x, y, 0)
-                #self.get_model_position(name)
-
-
-                x += 1
-
-                if x % 10 == 0:
-                    y += 1
-                    x = 0
-
-                #time.sleep(0.1) 
-
-        except rospy.ServiceException, e:
-            print("Error: " + e)
-
-        self.unpause_physics_srv()
-
+        return np_position
 
     def pause_physics(self):
         self.pause_physics_srv()
 
     def unpause_physics(self):
         self.unpause_physics_srv()
-
-    def generate_track(self):
-
-        # Generate track
-        self.track_points = create_track(30,250)
-
-        # Place cones
-        for i in range(len(self.track_points)):
-
-            # get two points
-            if i < len(self.track_points)-1:
-                p1 = np.array([self.track_points[i][0], self.track_points[i][1], 0])
-                p2 = np.array([self.track_points[i+1][0], self.track_points[i+1][1], 0])
-
-            else:
-                p1 = np.array([self.track_points[i][0], self.track_points[i][1], 0])
-                p2 = np.array([self.track_points[0][0], self.track_points[0][1], 0])
-
-            # calculate cross product
-            forward_vector = p2-p1 
-            forward_vector = forward_vector / np.linalg.norm(forward_vector)
-            right_vector = np.cross(forward_vector, self.up_vector)
-            
-            cone1 = p1 + (self.track_width/2.)*right_vector
-            cone2 = p1 - (self.track_width/2.)*right_vector
-
-            # change cone position
-            self.spawn_cone(cone1[0], cone1[1])
-            self.spawn_cone(cone2[0], cone2[1])
-
-            print(i/len(self.track_points))
-
-            #print(str(cone1[0]) + "," + str(cone1[1]) + "  -  " + str(cone2[0]) + "," + str(cone2[1]))
-            #time.sleep(0.1)
-
-
-    # callback listening for collision
-    def _bumper_callback(self, data):
-        
-        '''
-        # Check if hit a cone
-        states = data.states[0]
-        collision_name = states.collision1_name
-        
-        if "cone" in collision_name:
-            self.collision = True
-            print("bateeeeeu")
-        '''
-
-        # Check if hit something
-        states = data.states
-
-        if len(states) > 0:
-            self.pause_physics()
-            self.collision = True  
-            self.enable_drive_flag = False    
-            print("bateeeeeu")
-
-            time.sleep(0.5)
-
-
-    def routine(self):
-
-        self.pause_physics()
-
-        # spawn a lot of cones
-        #self.spawn_many_cones()
-        self.generate_track()
-        
-        for track in range(self.qnt_tracks):
-
-            # generate a track
-
-            for run in range(self.qnt_runs):
-
-                # enable car drive
-                self.unpause_physics()
-                self.enable_drive_flag = True
-
-                # wait until it crash into a cone
-                while self.enable_drive_flag == True:
-                    pass
-
-                # reset car position
-                self.pause_physics()
-                self.move_model(self.vehicle_name, 0, 0, 0)
 
 class TrainControl:
 
@@ -638,10 +452,12 @@ class TrainControl:
 
         self.vehicle_name = "ackermann_vehicle"
 
+        self.qnt_cones = 500
+
         self.qnt_tracks = 1                         # number of tracks to train
         self.qnt_runs = 100                          # number of reset of the car on a track
 
-        # Path to the models
+        # Cone model
         self.cone_model_path = rospkg.RosPack().get_path('autocone_description') + "/urdf/models/mini_cone/model.sdf"
         self.cone_file = None
 
@@ -654,15 +470,20 @@ class TrainControl:
             print("Could not read file: " + self.cone_model_path)
 
         # Models identifiers
-        self.cone_count = 0
-        self.cone_list = list()
+        self.cone_name_list = list()
+        
+        self.path_points = []
+        self.cur_restart_point = 0
 
         # Position 
         self.point_list = list()
         self.point_respawn_index = 1                     # index 
 
-        self.track_width = 1.0                          # distance between two cones
-        self.up_vector = np.array([0, 0, 1])            # vector pointing up
+        # Class to interact with gazebo
+        self.gazebo_interface = GazeboInterface()
+
+        # Class track
+        self.track = Track()
 
         # init node
         rospy.init_node('train_control', anonymous=True)
@@ -670,33 +491,10 @@ class TrainControl:
         # Subscribers
         rospy.Subscriber("/bumper_sensor", ContactsState, self._bumper_callback, queue_size=1)
 
-        # Services
-        self.spawn_srv = rospy.ServiceProxy("gazebo/spawn_sdf_model", SpawnModel, persistent=True)
-        self.world_properties_srv = rospy.ServiceProxy("gazebo/get_world_properties", GetWorldProperties, persistent=True)
-        self.delete_srv = rospy.ServiceProxy("gazebo/delete_model", DeleteModel, persistent=True)
-        self.pause_physics_srv = rospy.ServiceProxy("gazebo/pause_physics", Empty, persistent=True)
-        self.unpause_physics_srv = rospy.ServiceProxy("gazebo/unpause_physics", Empty, persistent=True)
-        self.set_model_state_srv = rospy.ServiceProxy("gazebo/set_model_state", SetModelState, persistent=True)
-        self.get_model_state_srv = rospy.ServiceProxy("gazebo/get_model_state", GetModelState, persistent=True)
-
-    def spawn_cone(self, posX, posY):
-        
-        try:            
-            cone_pose = Pose()
-            cone_pose.position.x = posX
-            cone_pose.position.y = posY
-            cone_pose.position.z = 0
-
-            model_name = "cone_" + str(self.cone_count)
-            self.spawn_srv(model_name, self.cone_file, "default", cone_pose, "world")
-            
-            self.cone_count += 1
-
-        except rospy.ServiceException, e:
-            print("Error: " + e)
-
     def reset_world(self):
+        pass
 
+        '''
         # Service to return models spawned on gazebo world
         rospy.wait_for_service("gazebo/get_world_properties")
         
@@ -729,48 +527,36 @@ class TrainControl:
 
         except rospy.ServiceException, e:
             print("Error: " + e)
+        '''
 
-    def move_model(self, model_name, posX, posY, yaw):
-        model = ModelState()
-        model.pose.position.x = posX
-        model.pose.position.y = posY
-        model.pose.position.z = 0
-        model.pose.orientation.x = 0
-        model.pose.orientation.y = 0
-        model.pose.orientation.z = yaw
-        model.model_name = model_name
+    def restart(self):
 
-        rospy.wait_for_service("gazebo/set_model_state")
-
-        while True:
-
-            # Try to move
-            try:
-                self.set_model_state_srv(model)
-
-            except rospy.ServiceException, e:
-                print("Error: " + e)
-
-            # Check if it has moved
-            prop_position = self.get_model_position(model_name=model_name)
-            if prop_position[0] == posX and prop_position[1] == posY:
-                break   
-
-    def get_model_position(self, model_name):
+        if self.cur_restart_point < len(self.path_point):
+            point1 = self.path_point[self.cur_restart_point]
         
-        # Get cones position
-        try:
-            rospy.wait_for_service("gazebo/get_model_state")
-            cone_position = self.get_model_state_srv(model_name=model_name).pose.position          
+        else:
+           point1 = self.path_point[0]
 
-        except rospy.ServiceException, e:
-            print("Error: " + e)
+        if self.cur_restart_point+1 < len(self.path_point):
+            point2 = self.path_point[self.cur_restart_point+1]
+        
+        else:
+           point2 = self.path_point[0]
+         
+        self.cur_restart_point += 1
+        
+        model_pose = Pose()
+        model_pose.position.x = point1[0]
+        model_pose.position.y = point1[1]
+        model_pose.position.z = 0
+    
+        self.gazebo_interface.move_model(self.vehicle_name, model_pose)
 
-        np_cone_position = np.array([cone_position.x, cone_position.y])
-        return np_cone_position
 
     def test_move(self):
+        pass
 
+        '''
         self.pause_physics_srv()
 
         x = 0
@@ -815,90 +601,110 @@ class TrainControl:
             print("Error: " + e)
 
         self.unpause_physics_srv()
-
-
-    def pause_physics(self):
-        self.pause_physics_srv()
-
-    def unpause_physics(self):
-        self.unpause_physics_srv()
+        '''
 
     def generate_track(self):
 
         # Generate track
-        self.track_points = create_track(30,250)
+        while True:
+            self.path_point, self.track_points = self.track.new_track()
 
-        # Place cones
-        for i in range(len(self.track_points)):
+            if len(self.track_points) < self.qnt_cones:
+                break
 
-            # get two points
-            if i < len(self.track_points)-1:
-                p1 = np.array([self.track_points[i][0], self.track_points[i][1], 0])
-                p2 = np.array([self.track_points[i+1][0], self.track_points[i+1][1], 0])
+        last_cone_placed = 0
+        cone_pose = Pose()
+        cone_pose.position.x = 0
+        cone_pose.position.y = 0
+        cone_pose.position.z = 0
 
-            else:
-                p1 = np.array([self.track_points[i][0], self.track_points[i][1], 0])
-                p2 = np.array([self.track_points[0][0], self.track_points[0][1], 0])
+        # Place/Move cones
+        for i, pos in enumerate(self.track_points):
 
-            # calculate cross product
-            forward_vector = p2-p1 
-            forward_vector = forward_vector / np.linalg.norm(forward_vector)
-            right_vector = np.cross(forward_vector, self.up_vector)
+            cone_pose.position.x = pos[0]
+            cone_pose.position.y = pos[1]
+            cone_pose.position.z = 0
+
+            cone_name = self.cone_name_list[i]
+
+            self.gazebo_interface.move_model(cone_name, cone_pose)
+
+            last_cone_placed = i
+
+        # Hide cones that are not used
+        cone_pose.position.x = 0
+        cone_pose.position.y = 0
+        cone_pose.position.z = -10
+        i = last_cone_placed
+
+        while i < self.qnt_cones:
+            cone_name = self.cone_name_list[i]
+            self.gazebo_interface.move_model(cone_name, cone_pose)
             
-            cone1 = p1 + (self.track_width/2.)*right_vector
-            cone2 = p1 - (self.track_width/2.)*right_vector
-
-            # change cone position
-            self.spawn_cone(cone1[0], cone1[1])
-            self.spawn_cone(cone2[0], cone2[1])
-
-            print(i/len(self.track_points))
-
-            #print(str(cone1[0]) + "," + str(cone1[1]) + "  -  " + str(cone2[0]) + "," + str(cone2[1]))
-            #time.sleep(0.1)
-
+            i += 1
 
     # callback listening for collision
     def _bumper_callback(self, data):
         
-        '''
-        # Check if hit a cone
-        states = data.states[0]
-        collision_name = states.collision1_name
-        
-        if "cone" in collision_name:
-            self.collision = True
-            print("bateeeeeu")
-        '''
-
         # Check if hit something
         states = data.states
 
         if len(states) > 0:
-            self.pause_physics()
+            self.gazebo_interface.pause_physics()
             self.collision = True  
             self.enable_drive_flag = False    
+            #time.sleep(0.5)
             print("bateeeeeu")
 
-            time.sleep(0.5)
+    def spawn_many_cones(self):
 
+        cone_pose = Pose()
+        cone_pose.position.x = 0
+        cone_pose.position.y = 0
+        cone_pose.position.z = -10
+
+        for i in range(self.qnt_cones):
+
+            progress_bar(i, self.qnt_cones, prefix='Progress', length=50)
+
+            model_name = "cone_" + str(i)
+            self.cone_name_list.append(model_name)
+
+            try:            
+                self.gazebo_interface.spawn_model(self.cone_file, model_name, cone_pose)
+                pass
+                
+            except rospy.ServiceException, e:
+                print("Error: " + e)
+
+            if i%100 != 0:
+                cone_pose.position.x += 1
+
+            else:
+                cone_pose.position.x = 0
+                cone_pose.position.y += 1            
 
     def routine(self):
 
-        self.pause_physics()
+        # Pause simulation during startup
+        print("Simulation Paused!")
+        self.gazebo_interface.pause_physics()
 
         # spawn a lot of cones
-        #self.spawn_many_cones()
-        self.generate_track()
+        print("Spawning a bunch of traffic cones ...")
+        self.spawn_many_cones()
         
         for track in range(self.qnt_tracks):
 
             # generate a track
+            print("Generating track " + str(track))
+            self.generate_track()
+            self.cur_restart_point = 0
 
             for run in range(self.qnt_runs):
 
                 # enable car drive
-                self.unpause_physics()
+                self.gazebo_interface.unpause_physics()
                 self.enable_drive_flag = True
 
                 # wait until it crash into a cone
@@ -906,59 +712,38 @@ class TrainControl:
                     pass
 
                 # reset car position
-                self.pause_physics()
-                self.move_model(self.vehicle_name, 0, 0, 0)
+                self.gazebo_interface.pause_physics()
+                self.restart()
 
+
+# Print iterations progress
+def progress_bar(iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█'):
+    """
+    Call in a loop to create terminal progress bar
+    @params:
+        iteration   - Required  : current iteration (Int)
+        total       - Required  : total iterations (Int)
+        prefix      - Optional  : prefix string (Str)
+        suffix      - Optional  : suffix string (Str)
+        decimals    - Optional  : positive number of decimals in percent complete (Int)
+        length      - Optional  : character length of bar (Int)
+        fill        - Optional  : bar fill character (Str)
+    """
+
+    total -= 1
+
+    percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+    filledLength = int(length * iteration // total)
+    bar = fill * filledLength + '-' * (length - filledLength)
+    print('\r%s |%s| %s%% %s' % (prefix, bar, percent, suffix), end='\r')
+    # Print New Line on Complete
+    if iteration == total: 
+        print("")
 
 if __name__ == '__main__':
 
-    #control = TrainControl()
-    #control.routine()
+    print("Starting gazebo ...")
 
-    track = Track()
+    control = TrainControl()
+    control.routine()
 
-'''
-    b.pause_physics()
-    #b.generate_track()
-    b.test_move()
-    b.unpause_physics()
-
-    raw_input()
-
-    exit(1)
-
-    
-
-    exit(1)
-
-    b.pause_physics()
-
-    a = 1
-    x = 0
-    y = 0
-    theta = 0
-
-    for i in range(0):
-        a += 0.01
-        theta += 0.1
-        x = a*math.cos(theta)
-        y = a*math.sin(theta)
-
-        b.spawn_cone(x, y)
-
-    b.unpause_physics()
-
-    print("press enter")
-
-    raw_input()
-
-    b.pause_physics()
-    b.test_move()
-    b.unpause_physics()
-
-    raw_input()
-
-    b.pause_physics()
-    b.reset_world()
-    b.unpause_physics()
-'''
