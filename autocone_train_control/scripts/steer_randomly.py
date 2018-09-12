@@ -45,8 +45,8 @@ class Drive:
             elif self.ackermann_cmd.steering_angle < -1.0:
                 self.ackermann_cmd.steering_angle = -1.0
 
-            #self.ackermann_cmd.steering_angle = random.uniform(-0.5, 0.5)
-            self.ackermann_cmd.steering_angle = random.gauss(0, 0.3)
+            self.ackermann_cmd.steering_angle = random.uniform(-0.5, 0.5)
+            #self.ackermann_cmd.steering_angle = random.gauss(0, 0.3)
 
             self.ackermann_pub.publish(self.ackermann_cmd)
 

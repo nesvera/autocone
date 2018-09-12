@@ -14,7 +14,8 @@
   <arg name="physics" default="dart"/>
   <arg name="verbose" default="false"/>
   <arg name="namespace" default="/"/>
-  <arg name="world_name" default="$(find autocone_description)/urdf/cone_world.world"/>
+  <!--<arg name="world_name" default="$(find autocone_description)/urdf/cone_world.world"/>-->
+  <arg name="world_name" default="$(find autocone_description)/urdf/track_test.world"/>
   <arg name="cmd_timeout" default="0.5"/>
 
   <!-- set command arguments -->

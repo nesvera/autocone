@@ -50,9 +50,13 @@ limitations under the License.
         chassis_wheeltrack along the y axis (distance between left and right wheels)
     -->
 
-    <!-- Update rate -->
-    <xacro:property name="update_rate" value="30.0"/>
-    <xacro:property name="bumper_update_rate" value="30.0"/>
+    <!-- Bumpper sensor Properties -->
+    <xacro:property name="bumper_update_rate" value="10.0"/>
+
+    <!-- Camera Properties -->
+    <xacro:property name="cam_update_rate" value="30.0"/>
+    <xacro:property name="clipping_near" value="0.02"/>
+    <xacro:property name="clipping_far" value="3.0"/>
 
     <!-- Degree-to-radian conversions -->
     <xacro:property name="degrees_45" value="0.785398163"/>
@@ -503,17 +507,17 @@ limitations under the License.
     <!-- Logitech C270 -->
     <gazebo reference="camera_link">
         <sensor type="camera" name="camera1">
-        <update_rate>${update_rate}</update_rate>
+        <update_rate>${cam_update_rate}</update_rate>
         <camera name="head">
             <horizontal_fov>1,0472</horizontal_fov>
             <image>
-            <width>800</width>
-            <height>800</height>
+            <width>1280</width>
+            <height>960</height>
             <format>R8G8B8</format>
             </image>
             <clip>
-            <near>0.02</near>
-            <far>300</far>
+            <near>${clipping_near}</near>
+            <far>${clipping_far}</far>
             </clip>
             <noise>
             <type>gaussian</type>
