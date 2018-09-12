@@ -5,6 +5,7 @@ from __future__ import print_function
 
 import rospy
 import rospkg
+from tf.transformations import quaternion_from_euler
 
 from gazebo_msgs.srv import (
     SpawnModel, 
@@ -13,18 +14,15 @@ from gazebo_msgs.srv import (
     SetModelState,
     GetModelState,
 )
-
 from gazebo_msgs.msg import (
     ModelState,
     ContactsState,
     ContactState,
 )
-
 from std_msgs.msg import String
 from std_srvs.srv import Empty
-
+from rosgraph_msgs.msg import Clock
 from geometry_msgs.msg import Pose
-from tf.transformations import quaternion_from_euler
 
 import random
 import numpy as np
@@ -492,6 +490,10 @@ class TrainControl:
 
         # Subscribers
         rospy.Subscriber("/bumper_sensor", ContactsState, self._bumper_callback, queue_size=1)
+        rospy.Subscriber('/clock', Clock, self._clock_callback)
+
+        self.run_timeout = 10000
+        self.cur_sim_time = 0
 
     def restart_car(self, run):
 
@@ -591,6 +593,9 @@ class TrainControl:
             time.sleep(0.5)
             print("bateeeeeu")
 
+    def _clock_callback(self, data):
+        self.cur_sim_time = data.clock.secs*1000 + (data.clock.nsecs/1000000.0)
+
     def spawn_many_cones(self):
 
         cone_pose = Pose()
@@ -649,8 +654,9 @@ class TrainControl:
                 self.gazebo_interface.unpause_physics()
                 self.enable_drive_flag = True
 
-                # wait until it crash into a cone
-                while self.enable_drive_flag == True:
+                # wait until it crash into a cone or timeout
+                start_sim_time = self.cur_sim_time
+                while self.enable_drive_flag == True and (self.cur_sim_time - start_sim_time) < self.run_timeout:
                     pass
 
                 # reset car position
@@ -697,6 +703,5 @@ if __name__ == '__main__':
     To do list
         - log error messages
         - add noise in cone spot
-        - run timeout baseado no tempo de simulacao
 
 '''
