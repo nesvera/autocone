@@ -69,6 +69,10 @@ class Track:
         self.path_area = 30
         self.path_max_points = 250
 
+        # Position noise properties
+        self.real_std_dev = 0.1         # standart deviation in meters
+        self.scaled_std_dev = self.scale*self.real_std_dev
+
     def new_track(self):
         
         # generate a new path
@@ -212,6 +216,13 @@ class Track:
 
                     # next cone position
                     next_cone = ref_cone + dir_vector*self.scaled_dist_btw_cones
+
+                    # apply noise
+                    x_noise = random.gauss(0, self.scaled_std_dev)
+                    y_noise = random.gauss(0, self.scaled_std_dev)
+                    noise = np.array([x_noise, y_noise, 0])
+
+                    next_cone += noise
 
                     spaced_point_list.append(next_cone)
                     ref_ind = next_cone_ind
@@ -698,10 +709,8 @@ if __name__ == '__main__':
     control.routine()
 
 
-
 '''
     To do list
         - log error messages
-        - add noise in cone spot
 
 '''
