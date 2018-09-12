@@ -24,6 +24,7 @@ from std_msgs.msg import String
 from std_srvs.srv import Empty
 
 from geometry_msgs.msg import Pose
+from tf.transformations import quaternion_from_euler
 
 import random
 import numpy as np
@@ -36,6 +37,7 @@ import sys
 
 DEBUG = False
 DEBUG_PLOT = False
+GUI = True
   
 class Track:
 
@@ -452,10 +454,10 @@ class TrainControl:
 
         self.vehicle_name = "ackermann_vehicle"
 
-        self.qnt_cones = 500
+        self.qnt_cones = 300
 
         self.qnt_tracks = 1                         # number of tracks to train
-        self.qnt_runs = 1000                          # number of reset of the car on a track
+        self.qnt_runs = 10000                          # number of reset of the car on a track
 
         # Cone model
         self.cone_model_path = rospkg.RosPack().get_path('autocone_description') + "/urdf/models/mini_cone/model.sdf"
@@ -491,45 +493,7 @@ class TrainControl:
         # Subscribers
         rospy.Subscriber("/bumper_sensor", ContactsState, self._bumper_callback, queue_size=1)
 
-    def reset_world(self):
-        pass
-
-        '''
-        # Service to return models spawned on gazebo world
-        rospy.wait_for_service("gazebo/get_world_properties")
-        
-        model_names = None
-
-        # Read models
-        try:
-            resp_properties = self.world_properties_srv()
-            model_names = resp_properties.model_names
-
-        except rospy.ServiceException, e:
-            print("Error: " + e)
-
-        # Remove cones and car
-        try:
-            for name in model_names:
-
-                # Dont remove ground_plane
-                if "ground_plane" in name or "ackermann_vehicle" in name:
-                    print("achou")
-                    continue
-
-                print(name)
-
-                # Call delete
-                resp_delete = self.delete_srv(name)
-
-                if resp_delete.success == False:
-                    print("Error trying to delete cone")
-
-        except rospy.ServiceException, e:
-            print("Error: " + e)
-        '''
-
-    def restart(self):
+    def restart_car(self, run):
 
         if self.cur_restart_point < len(self.path_point):
             point1 = self.path_point[self.cur_restart_point]
@@ -543,67 +507,29 @@ class TrainControl:
         else:
            point2 = self.path_point[0]
          
-        self.cur_restart_point += 1
+        if run%100 == 0:
+            self.cur_restart_point += 1
 
-        point1 = self.path_point[0]
-        
+        dx = point2[0] - point1[0]
+        dy = point2[1] - point1[1]
+
+        theta = math.atan(dy/dx)
+
+        if (run/50)%2 != 0:
+            theta = theta + math.pi
+
+        quat = quaternion_from_euler(0, 0, theta)
+       
         model_pose = Pose()
         model_pose.position.x = point1[0]
         model_pose.position.y = point1[1]
         model_pose.position.z = 0
-    
+        model_pose.orientation.x = quat[0]
+        model_pose.orientation.y = quat[1]
+        model_pose.orientation.z = quat[2]
+        model_pose.orientation.w = quat[3]
+
         self.gazebo_interface.move_model(self.vehicle_name, model_pose)
-
-
-    def test_move(self):
-        pass
-
-        '''
-        self.pause_physics_srv()
-
-        x = 0
-        y = 0
-
-        # Service to return models spawned on gazebo world
-        rospy.wait_for_service("gazebo/get_world_properties")
-        
-        model_names = None
-
-        # Read models
-        try:
-            resp_properties = self.world_properties_srv()
-            model_names = resp_properties.model_names
-
-        except rospy.ServiceException, e:
-            print("Error: " + e)
-
-        try:
-            for name in model_names:
-
-                # Dont remove ground_plane
-                if "ground_plane" in name or "ackermann_vehicle" in name:
-                    print("achou")
-                    continue
-
-                print(name)               
-
-                self.move_model(name, x, y, 0)
-                #self.get_model_position(name)
-
-
-                x += 1
-
-                if x % 10 == 0:
-                    y += 1
-                    x = 0
-
-                #time.sleep(0.1) 
-
-        except rospy.ServiceException, e:
-            print("Error: " + e)
-
-        self.unpause_physics_srv()
-        '''
 
     def generate_track(self):
 
@@ -631,8 +557,12 @@ class TrainControl:
 
             cone_name = self.cone_name_list[i]
 
-            #self.gazebo_interface.move_model(cone_name, cone_pose)
-            self.gazebo_interface.spawn_model(self.cone_file, cone_name, cone_pose)
+            # gazebo have some problems with render moved models
+            if GUI == False:
+                self.gazebo_interface.move_model(cone_name, cone_pose)
+
+            else:
+                self.gazebo_interface.spawn_model(self.cone_file, cone_name, cone_pose)    
 
             last_cone_placed = i
 
@@ -676,7 +606,9 @@ class TrainControl:
             self.cone_name_list.append(model_name)
 
             try:            
-                #self.gazebo_interface.spawn_model(self.cone_file, model_name, cone_pose)
+                # gazebo have some problems with render moved models
+                if GUI == False:
+                    self.gazebo_interface.spawn_model(self.cone_file, model_name, cone_pose)
                 pass
                 
             except rospy.ServiceException, e:
@@ -702,11 +634,16 @@ class TrainControl:
         for track in range(self.qnt_tracks):
 
             # generate a track
-            print("Generating track " + str(track))
+            print("")
+            print("Generating track " + str(track) + " of " + str(self.qnt_tracks))
             self.generate_track()
+
+            self.restart_car(0)
             self.cur_restart_point = 0
 
             for run in range(self.qnt_runs):
+
+                print("Run " + str(run) + " of " + str(self.qnt_runs))
 
                 # enable car drive
                 self.gazebo_interface.unpause_physics()
@@ -718,7 +655,7 @@ class TrainControl:
 
                 # reset car position
                 self.gazebo_interface.pause_physics()
-                self.restart()
+                self.restart_car(run)
 
                 time.sleep(0.1)
 
@@ -754,3 +691,12 @@ if __name__ == '__main__':
     control = TrainControl()
     control.routine()
 
+
+
+'''
+    To do list
+        - log error messages
+        - add noise in cone spot
+        - run timeout baseado no tempo de simulacao
+
+'''
