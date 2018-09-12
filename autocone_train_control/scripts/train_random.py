@@ -503,7 +503,7 @@ class TrainControl:
         rospy.Subscriber("/bumper_sensor", ContactsState, self._bumper_callback, queue_size=1)
         rospy.Subscriber('/clock', Clock, self._clock_callback)
 
-        self.run_timeout = 10000
+        self.run_timeout = 5000                # milliseconds
         self.cur_sim_time = 0
 
     def restart_car(self, run):
@@ -602,7 +602,7 @@ class TrainControl:
             self.collision = True  
             self.enable_drive_flag = False    
             time.sleep(0.5)
-            print("bateeeeeu")
+            #print("bateeeeeu")
 
     def _clock_callback(self, data):
         self.cur_sim_time = data.clock.secs*1000 + (data.clock.nsecs/1000000.0)
