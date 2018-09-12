@@ -499,6 +499,9 @@ class TrainControl:
         # init node
         rospy.init_node('train_control', anonymous=True)
 
+        # Set simulation name
+        rospy.set_param('sim_name', 'baz')
+
         # Subscribers
         rospy.Subscriber("/bumper_sensor", ContactsState, self._bumper_callback, queue_size=1)
         rospy.Subscriber('/clock', Clock, self._clock_callback)

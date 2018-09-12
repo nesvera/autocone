@@ -17,6 +17,7 @@ from cv_bridge import CvBridge, CvBridgeError
 
 import cv2
 import numpy as np
+import datetime
 
 # Instantiate CvBridge
 bridge = CvBridge()
@@ -41,10 +42,10 @@ class Datalogger:
         self.header = None
         self.camera_image = np.zeros([self.image_width, self.image_height, 3])
         self.collision = 0
-        self.controller = None
+        self.steering = 0
+        self.speed = 0
 
     def _image_calback(self, data):
-        print('image callback')
         cv2_img = None
 
         try:
@@ -67,21 +68,29 @@ class Datalogger:
         states = data.states
         
         if len(states) > 0:
-            #print("bateu")
             self.collision = 1
 
         else:
             self.collision = 0
 
     def _car_control_callback(self, data):
-        self.controller = data
+        self.steering = data.steering_angle
+        self.speed = data.speed
 
     def routine(self):
 
         while not rospy.is_shutdown():
-            time = self.header
+
+            # year-month-day-hour-minute-seconds-microseconds
+            filename = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S-%f')
+
+            resized_image = cv2.resize(self.camera_image, None, fx=0.3, fy=0.3, interpolation=cv2.INTER_CUBIC)
+
             username = getpass.getuser()
-            cv2.imwrite('/home/'+ username + '/Documents/train_pic/'+str(time)+'.jpg', cv2.resize(self.camera_image, None, fx=0.3, fy=0.3, interpolation=cv2.INTER_CUBIC))
+            #cv2.imwrite('/home/'+ username + '/Documents/train_pic/'+str(time)+'.jpg', resized_image)
+
+            output_msg = filename + ";" + str(self.speed) + ";" + str(self.steering) + ";" + str(self.collision) + ";*"
+            print(output_msg)
 
             self.rate.sleep()
 
