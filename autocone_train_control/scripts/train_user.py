@@ -189,7 +189,11 @@ class TrainControl:
 
     def load_track(self):
 
-        with open('/home/nesvera/catkin_ws/src/autocone/autocone_train_control/tracks/track.pickle', 'rb') as fp:
+        rp = rospkg.RosPack()
+        package_path = rp.get_path("autocone_train_control")
+        track_path = package_path + "/tracks/track.pickle"
+
+        with open(track_path, 'rb') as fp:
             self.track_points = pickle.load(fp)
 
         # Place/Move cones
