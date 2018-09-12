@@ -35,7 +35,7 @@ import time
 import sys
 
 DEBUG = False
-DEBUG_PLOT = True
+DEBUG_PLOT = False
   
 class Track:
 
@@ -544,6 +544,8 @@ class TrainControl:
            point2 = self.path_point[0]
          
         self.cur_restart_point += 1
+
+        point1 = self.path_point[0]
         
         model_pose = Pose()
         model_pose.position.x = point1[0]
@@ -617,6 +619,8 @@ class TrainControl:
         cone_pose.position.x = 0
         cone_pose.position.y = 0
         cone_pose.position.z = 0
+
+        #np.save
 
         # Place/Move cones
         for i, pos in enumerate(self.track_points):
@@ -715,6 +719,8 @@ class TrainControl:
                 # reset car position
                 self.gazebo_interface.pause_physics()
                 self.restart()
+
+                time.sleep(0.1)
 
 
 # Print iterations progress
