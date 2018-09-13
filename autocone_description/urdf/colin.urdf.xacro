@@ -51,7 +51,7 @@ limitations under the License.
     -->
 
     <!-- Bumpper sensor Properties -->
-    <xacro:property name="bumper_update_rate" value="10.0"/>
+    <xacro:property name="bumper_update_rate" value="30.0"/>
 
     <!-- Camera Properties -->
     <xacro:property name="cam_update_rate" value="30.0"/>
@@ -73,7 +73,7 @@ limitations under the License.
         along the y axis, and hitbox_height along the z axis. -->
     <xacro:property name="hitbox_length" value="0.370"/>
     <xacro:property name="hitbox_width" value="0.25"/>
-    <xacro:property name="hitbox_height" value="0.02"/>
+    <xacro:property name="hitbox_height" value="0.01"/>
 
     <!-- battery_dist is the distance between the inner edges of the
         batteries. battery_comp_depth is the battery compartment depth.

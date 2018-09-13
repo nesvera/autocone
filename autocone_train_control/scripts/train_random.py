@@ -32,6 +32,9 @@ import matplotlib.pyplot as plt
 import math
 import time
 import sys
+import datetime
+import os
+import getpass
 
 DEBUG = False
 DEBUG_PLOT = False
@@ -499,6 +502,21 @@ class TrainControl:
         # init node
         rospy.init_node('train_control', anonymous=True)
 
+        # year-month-day-hour-minute
+        sim_name = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M')
+
+        # Set simulation name
+        rospy.set_param('sim_name', sim_name)
+        username = getpass.getuser()
+        dataset_folder = '/home/'+ username + '/Documents/autocone_dataset/'
+        dataset_image_folder = dataset_folder + "/" + sim_name
+        
+        # Create folder to store the images of trains(piuiiii)
+        if not os.path.exists(dataset_folder):
+            os.makedirs(dataset_folder)
+
+        os.makedirs(dataset_image_folder)
+
         # Subscribers
         rospy.Subscriber("/bumper_sensor", ContactsState, self._bumper_callback, queue_size=1)
         rospy.Subscriber('/clock', Clock, self._clock_callback)
@@ -536,7 +554,7 @@ class TrainControl:
         model_pose = Pose()
         model_pose.position.x = point1[0]
         model_pose.position.y = point1[1]
-        model_pose.position.z = 0
+        model_pose.position.z = 0.05
         model_pose.orientation.x = quat[0]
         model_pose.orientation.y = quat[1]
         model_pose.orientation.z = quat[2]
@@ -599,9 +617,11 @@ class TrainControl:
 
         if len(states) > 0:
             self.gazebo_interface.pause_physics()
+
+            #time.sleep(0.5)
+
             self.collision = True  
             self.enable_drive_flag = False    
-            time.sleep(0.5)
             #print("bateeeeeu")
 
     def _clock_callback(self, data):
@@ -674,8 +694,7 @@ class TrainControl:
                 self.gazebo_interface.pause_physics()
                 self.restart_car(run)
 
-                time.sleep(0.1)
-
+                
 
 # Print iterations progress
 def progress_bar(iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█'):
