@@ -32,6 +32,13 @@ class Datalogger:
 
         self.rate = rospy.Rate(30)
 
+        # get simulation name
+        self.sim_name = rospy.get_param('sim_name')
+        username = getpass.getuser()
+        self.dataset_folder = '/home/'+ username + '/Documents/autocone_dataset/'
+        self.dataset_image_folder = self.dataset_folder + "/" + self.sim_name + "/"
+        self.dataset_text_file = self.dataset_image_folder + self.sim_name + ".txt"
+
         rospy.Subscriber("/camera/image_raw", Image, self._image_calback, queue_size=1) 
         rospy.Subscriber("/bumper_sensor", ContactsState, self._bumper_callback, queue_size=1)
         rospy.Subscriber('/ackermann_cmd', AckermannDrive, self._car_control_callback, queue_size=1)
@@ -39,6 +46,7 @@ class Datalogger:
         self.image_width = 1280
         self.image_height = 960
 
+        self.new_data = False
         self.header = None
         self.camera_image = np.zeros([self.image_width, self.image_height, 3])
         self.collision = 0
@@ -62,6 +70,8 @@ class Datalogger:
             self.header = data.header.stamp
             self.camera_image = cv2_img
 
+            self.new_data = True
+
     def _bumper_callback(self, data):
         
         # Check if hit something
@@ -81,16 +91,17 @@ class Datalogger:
 
         while not rospy.is_shutdown():
 
-            # year-month-day-hour-minute-seconds-microseconds
-            filename = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S-%f')
+            if self.new_data == True:
+                # year-month-day-hour-minute-seconds-microseconds
+                filename = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S-%f')
 
-            resized_image = cv2.resize(self.camera_image, None, fx=0.3, fy=0.3, interpolation=cv2.INTER_CUBIC)
+                resized_image = cv2.resize(self.camera_image, None, fx=0.3, fy=0.3, interpolation=cv2.INTER_CUBIC)
+                cv2.imwrite((self.dataset_image_folder + str(filename) + '.jpg'), resized_image)
 
-            username = getpass.getuser()
-            #cv2.imwrite('/home/'+ username + '/Documents/train_pic/'+str(time)+'.jpg', resized_image)
+                output_msg = filename + ";" + str(self.speed) + ";" + str(self.steering) + ";" + str(self.collision) + ";*"
+                print(output_msg)
 
-            output_msg = filename + ";" + str(self.speed) + ";" + str(self.steering) + ";" + str(self.collision) + ";*"
-            print(output_msg)
+                self.new_data = False
 
             self.rate.sleep()
 

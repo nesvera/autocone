@@ -32,6 +32,9 @@ import matplotlib.pyplot as plt
 import math
 import time
 import sys
+import datetime
+import os
+import getpass
 
 DEBUG = False
 DEBUG_PLOT = False
@@ -499,8 +502,21 @@ class TrainControl:
         # init node
         rospy.init_node('train_control', anonymous=True)
 
+        # year-month-day-hour-minute
+        sim_name = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M')
+
         # Set simulation name
-        rospy.set_param('sim_name', 'baz')
+        rospy.set_param('sim_name', sim_name)
+        username = getpass.getuser()
+        dataset_folder = '/home/'+ username + '/Documents/autocone_dataset/'
+        dataset_image_folder = dataset_folder + "/" + sim_name
+        
+        # Create folder to store the images of trains(piuiiii)
+        if not os.path.exists(dataset_folder):
+            os.makedirs(dataset_folder)
+
+        os.makedirs(dataset_image_folder)
+
 
         # Subscribers
         rospy.Subscriber("/bumper_sensor", ContactsState, self._bumper_callback, queue_size=1)
