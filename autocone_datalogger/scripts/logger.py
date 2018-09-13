@@ -37,7 +37,7 @@ class Datalogger:
         username = getpass.getuser()
         self.dataset_folder = '/home/'+ username + '/Documents/autocone_dataset/'
         self.dataset_image_folder = self.dataset_folder + "/" + self.sim_name + "/"
-        self.dataset_text_file = self.dataset_image_folder + self.sim_name + ".txt"
+        self.dataset_text_filename = self.dataset_image_folder + self.sim_name + ".txt"
 
         rospy.Subscriber("/camera/image_raw", Image, self._image_calback, queue_size=1) 
         rospy.Subscriber("/bumper_sensor", ContactsState, self._bumper_callback, queue_size=1)
@@ -93,19 +93,20 @@ class Datalogger:
 
             if self.new_data == True:
                 # year-month-day-hour-minute-seconds-microseconds
-                filename = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S-%f')
+                data_name = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S-%f')
 
                 resized_image = cv2.resize(self.camera_image, None, fx=0.3, fy=0.3, interpolation=cv2.INTER_CUBIC)
-                cv2.imwrite((self.dataset_image_folder + str(filename) + '.jpg'), resized_image)
+                cv2.imwrite((self.dataset_image_folder + str(data_name) + '.jpg'), resized_image)
 
-                output_msg = filename + ";" + str(self.speed) + ";" + str(self.steering) + ";" + str(self.collision) + ";*"
-                print(output_msg)
+                output_data = data_name + ";" + str(self.speed) + ";" + str(self.steering) + ";" + str(self.collision) + ";*\n"
+                with open(self.dataset_text_filename, "a") as myfile:
+                    myfile.write(output_data)
+
+                print(output_data)
 
                 self.new_data = False
 
-            self.rate.sleep()
-
-    
+            self.rate.sleep()    
 
 if __name__ == '__main__':
     logger = Datalogger()
