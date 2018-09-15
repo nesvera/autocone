@@ -503,19 +503,8 @@ class TrainControl:
         rospy.init_node('train_control', anonymous=True)
 
         # year-month-day-hour-minute
-        sim_name = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M')
-
-        # Set simulation name
-        rospy.set_param('sim_name', sim_name)
-        username = getpass.getuser()
-        dataset_folder = '/home/'+ username + '/Documents/autocone_dataset/'
-        dataset_image_folder = dataset_folder + "/" + sim_name
-        
-        # Create folder to store the images of trains(piuiiii)
-        if not os.path.exists(dataset_folder):
-            os.makedirs(dataset_folder)
-
-        os.makedirs(dataset_image_folder)
+        self.init_sim_time = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M')
+        self.sim_name = None
 
         # Subscribers
         rospy.Subscriber("/bumper_sensor", ContactsState, self._bumper_callback, queue_size=1)
@@ -680,6 +669,10 @@ class TrainControl:
             for run in range(self.qnt_runs):
 
                 print("Run " + str(run) + " of " + str(self.qnt_runs))
+                self.sim_name = self.init_sim_time + "_" + str(track) + "_" + str(run)
+                
+                # Set simulation name
+                rospy.set_param('sim_name', self.sim_name)
 
                 # enable car drive
                 self.gazebo_interface.unpause_physics()
