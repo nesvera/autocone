@@ -44,7 +44,8 @@ class Datalogger:
         if not os.path.exists(self.dataset_folder):
             os.makedirs(self.dataset_folder)
 
-        rospy.Subscriber("/camera/image_raw", Image, self._image_calback, queue_size=1) 
+        #rospy.Subscriber("/camera/image_raw", Image, self._image_calback, queue_size=1) 
+        rospy.Subscriber("/camera/image_raw/binary", Image, self._image_calback, queue_size=1) 
         rospy.Subscriber("/bumper_sensor", ContactsState, self._bumper_callback, queue_size=1)
         rospy.Subscriber('/ackermann_cmd', AckermannDrive, self._car_control_callback, queue_size=1)
 
@@ -63,10 +64,12 @@ class Datalogger:
 
     def _image_calback(self, data):
         cv2_img = None
+        data.encoding = "mono8"
 
         try:
             #Convert ROS image to Opencv
-            cv2_img = bridge.imgmsg_to_cv2(data, "bgr8")
+            #cv2_img = bridge.imgmsg_to_cv2(data, "bgr8")   # rgb
+            cv2_img = bridge.imgmsg_to_cv2(data, "mono8")   # binary
 
         except CvBridgeError, e:
             print(e)

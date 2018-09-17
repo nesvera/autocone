@@ -462,6 +462,8 @@ class TrainControl:
 
     def __init__(self):
 
+        self.collision = False
+
         self.enable_drive_flag = False
 
         self.vehicle_name = "ackermann_vehicle"
@@ -605,8 +607,6 @@ class TrainControl:
         states = data.states
 
         if len(states) > 0:
-            self.gazebo_interface.pause_physics()
-
             #time.sleep(0.5)
 
             self.collision = True  
@@ -655,6 +655,13 @@ class TrainControl:
         # spawn a lot of cones
         print("Spawning a bunch of traffic cones ...")
         self.spawn_many_cones()
+
+        rate = rospy.Rate(15)
+
+        current_run = 0
+        total_runs = 10000
+        run_ticks = 150 # Amount of ticks per run
+
         
         for track in range(self.qnt_tracks):
 
@@ -666,26 +673,31 @@ class TrainControl:
             self.restart_car(0)
             self.cur_restart_point = 0
 
-            for run in range(self.qnt_runs):
-
-                print("Run " + str(run) + " of " + str(self.qnt_runs))
+            for run in range(total_runs):
+                print("Run " + str(run) + " of " + str(total_runs))
                 self.sim_name = self.init_sim_time + "_" + str(track) + "_" + str(run)
-                
                 # Set simulation name
-                rospy.set_param('sim_name', self.sim_name)
+                rospy.set_param('sim_name', self.sim_name) 
 
                 # enable car drive
                 self.gazebo_interface.unpause_physics()
-                self.enable_drive_flag = True
 
-                # wait until it crash into a cone or timeout
-                start_sim_time = self.cur_sim_time
-                while self.enable_drive_flag == True and (self.cur_sim_time - start_sim_time) < self.run_timeout:
-                    pass
+                # Run for run_ticks
+                for ticks in range(run_ticks):
+                    print("Tick {} of {}".format(ticks+1, run_ticks))
+                    if self.collision == True:
+                        print("Collision")
+                        self.collision = False
+                        break
 
+                    rate.sleep() 
+
+                print("Restarting simulation...")
                 # reset car position
                 self.gazebo_interface.pause_physics()
                 self.restart_car(run)
+                
+
 
                 
 
