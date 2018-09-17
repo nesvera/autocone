@@ -21,8 +21,7 @@ class SimVision:
         # Used to conver ros image messages to opencv images
         self.cv_bridge = CvBridge()
 
-        cam_sub = rospy.Subscriber("/camera/image_raw", Image, 
-                                   self.cvProcess)
+        cam_sub = rospy.Subscriber("/camera/image_raw", Image, self.cvProcess)
 
         self.pub = rospy.Publisher('/camera/image_raw/binary', Image, queue_size=10)
 
@@ -30,14 +29,15 @@ class SimVision:
         cv_img = self.cv_bridge.imgmsg_to_cv2(img_data, "bgr8")
 
         mask = cv2.inRange(cv_img, LOWER_COLOR, UPPER_COLOR)
+
         try:
             self.pub.publish(self.cv_bridge.cv2_to_imgmsg(mask, encoding="passthrough"))
         except CvBridgeError as e:
             print(e)
 
-        cv2.imshow("Mask", mask)
-        cv2.imshow("Img", cv_img)
-        cv2.waitKey(1)
+        #cv2.imshow("Mask", mask)
+        #cv2.imshow("Img", cv_img)
+        #cv2.waitKey(1)
 
 if __name__ == "__main__":
     sim_vision = SimVision()

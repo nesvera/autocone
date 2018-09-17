@@ -18,6 +18,7 @@ from cv_bridge import CvBridge, CvBridgeError
 import cv2
 import numpy as np
 import datetime
+import os
 
 # Instantiate CvBridge
 bridge = CvBridge()
@@ -33,13 +34,18 @@ class Datalogger:
         self.rate = rospy.Rate(30)
 
         # get simulation name
-        self.sim_name = rospy.get_param('sim_name')
+        self.sim_name = None
         username = getpass.getuser()
         self.dataset_folder = '/home/'+ username + '/Documents/autocone_dataset/'
-        self.dataset_image_folder = self.dataset_folder + "/" + self.sim_name + "/"
-        self.dataset_text_filename = self.dataset_image_folder + self.sim_name + ".txt"
+        self.dataset_image_folder = None
+        self.dataset_text_filename = None
 
-        rospy.Subscriber("/camera/image_raw", Image, self._image_calback, queue_size=1) 
+        # Create folder to store the images of trains(piuiiii)
+        if not os.path.exists(self.dataset_folder):
+            os.makedirs(self.dataset_folder)
+
+        #rospy.Subscriber("/camera/image_raw", Image, self._image_calback, queue_size=1) 
+        rospy.Subscriber("/camera/image_raw/binary", Image, self._image_calback, queue_size=1) 
         rospy.Subscriber("/bumper_sensor", ContactsState, self._bumper_callback, queue_size=1)
         rospy.Subscriber('/ackermann_cmd', AckermannDrive, self._car_control_callback, queue_size=1)
 
@@ -53,12 +59,17 @@ class Datalogger:
         self.steering = 0
         self.speed = 0
 
+        # after the crash, wait until the car respawns to return to save
+        self.stop_saving = False
+
     def _image_calback(self, data):
         cv2_img = None
+        data.encoding = "mono8"
 
         try:
             #Convert ROS image to Opencv
-            cv2_img = bridge.imgmsg_to_cv2(data, "bgr8")
+            #cv2_img = bridge.imgmsg_to_cv2(data, "bgr8")   # rgb
+            cv2_img = bridge.imgmsg_to_cv2(data, "mono8")   # binary
 
         except CvBridgeError, e:
             print(e)
@@ -91,9 +102,41 @@ class Datalogger:
 
         while not rospy.is_shutdown():
 
+            # Normal driving
+            if self.stop_saving == False and self.collision == 0:
+                pass
+
+            # crash
+            elif self.stop_saving == False and self.collision == 1:
+                self.stop_saving = True
+
+            # after crash and respawn
+            elif self.stop_saving == True and self.collision == 0:
+                self.stop_saving = False
+
+            # after crash and before respawn
+            elif self.stop_saving == True and self.collision == 1:
+                self.new_data = False
+                continue
+
             if self.new_data == True:
-                # year-month-day-hour-minute-seconds-microseconds
-                data_name = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S-%f')
+
+                '''
+                init_time = year-month-day-hour-minutes of the start of the simulation script
+                sim_name = init_time + track + run
+                data_name = sim_name + seconds-miliseconds
+                '''
+
+                self.sim_name = rospy.get_param('sim_name')
+                self.dataset_image_folder = self.dataset_folder + "/" + self.sim_name + "/"
+                self.dataset_text_filename = self.dataset_image_folder + self.sim_name + ".txt"
+
+                if not os.path.exists(self.dataset_image_folder):
+                    os.makedirs(self.dataset_image_folder)
+
+                # seconds - microsencods
+                time_now = datetime.datetime.now().strftime('%M-%S-%f')
+                data_name = self.sim_name + "_" + time_now
 
                 resized_image = cv2.resize(self.camera_image, None, fx=0.3, fy=0.3, interpolation=cv2.INTER_CUBIC)
                 cv2.imwrite((self.dataset_image_folder + str(data_name) + '.jpg'), resized_image)
@@ -105,6 +148,8 @@ class Datalogger:
                 print(output_data)
 
                 self.new_data = False
+            
+
 
             self.rate.sleep()    
 
