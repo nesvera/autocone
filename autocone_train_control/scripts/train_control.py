@@ -157,8 +157,11 @@ def create_track(length,npoints):
         X4.append(X3[i])
         Y4.append(Y3[i])
     
-    X4.append((X4[-1]+X4[0])/2.)
-    Y4.append((Y4[-1]+Y4[0])/2.)
+    for i in np.linspace(X4[-1], X4[0], 5,endpoint=False):
+        X4.append(i)
+    
+    for i in np.linspace(Y4[-1], Y4[0], 5,endpoint=False):
+        Y4.append(i)
     
     plt.plot(X4,Y4,'-',0,0,'.')
     plt.axis('square')
