@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+'''
+    Get all images from the dataset folder (wich run is stored inside a folder), resize, 
+and save in a single folder to train the variational autoenconder
+'''
 from __future__ import print_function
 
 from glob import glob

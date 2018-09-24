@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+'''
+    Pass through all folders of the dataset set (wich run is stored inside a folder). 
+    - Delete folders(runs) with less than 1 second of simulation (30 frames)
+'''
+
 from __future__ import print_function
 
 from glob import glob
@@ -8,7 +13,7 @@ import getpass
 import os
 import shutil
 
-# Delete initial frames
+# Delete initial frames (car respawning)
 initial_frames = 5
 
 # Delete runs with less steps than min_seq
