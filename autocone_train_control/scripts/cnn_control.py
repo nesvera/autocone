@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
-import cv2
+import cv2 as cv
+import datetime
 
 import keras
 from keras.models import load_model
@@ -13,21 +14,29 @@ import rospy
 from ackermann_msgs.msg import AckermannDrive
 from cv_bridge import CvBridge, CvBridgeError
 
+from sensor_msgs.msg import (
+    Image,
+)
+
 bridge = CvBridge()
 
 class Predict:
 
     def __init__(self):
+
+        rospy.init_node("cnn_control", anonymous=True)
+
         self.camera_image = 0
+        self.new_data = False
         self.speed = 0
         self.steering = 0
-        self.model = self.load_trained_model('/home/catkin_ws/src/autocone/autocone_utils/cnn/saved_models/my_model2.h5')
+        self.model = self.load_trained_model('/home/luiza/catkin_ws/src/autocone/autocone_utils/cnn/saved_models/my_model2.h5')
         
         rospy.Subscriber("/camera/image_raw/binary", Image, self._image_calback, queue_size=1) 
         rospy.Subscriber('/ackermann_cmd', AckermannDrive, self._car_control_callback, queue_size=1)
 
-        self.width = 384
-        self.height = 288
+        self.width = 1280
+        self.height = 960
 
         self.ackermann_cmd = AckermannDrive()
         self.ackermann_cmd.speed = 1
@@ -44,11 +53,12 @@ class Predict:
         try:
             #Convert ROS image to Opencv
             cv2_img = bridge.imgmsg_to_cv2(data, "mono8")   # binary
+            print('recebida', cv2_img)
         except CvBridgeError, e:
             print(e)
         else:
             self.camera_image = cv2_img
-            self.predict(self.camera_image)
+            self.new_data = True
 
     def _car_control_callback(self, data):
         self.steering = data.steering_angle
@@ -63,28 +73,31 @@ class Predict:
         return model
 
     def resize_and_reshape(self, img):
-        resized = cv.resize(img,(0.3*self.width, 0.3*self.height), interpolation = cv.INTER_CUBIC)
-        img = np.asarray(img)
-        shape = img.shape
+        resized = cv.resize(img, (86, 115), interpolation = cv.INTER_CUBIC)
+        shape = resized.shape
 
         if K.image_data_format() == 'channels_first': # channels, rows, cols
-            img = img.reshape(img.shape[0], 1, shape[1], shape[2])
-            input_shape = (1, shape[1], shape[2])
+            resized = resized.reshape(1, 1, shape[1], shape[0]) # isso provavelmente tá errado
+            input_shape = (1, 1, shape[0], shape[1])
         else:
-            img = img.reshape(img.shape[0], shape[1], shape[2], 1) # rows, cols, channels
-            input_shape = (shape[1], shape[2], 1)
+            resized = resized.reshape(1, shape[1], shape[0], 1) # rows, cols, channels
+            input_shape = (1, shape[0], shape[1], 1)
 
-        return img
+        return resized
 
     def predict(self):
-        cv2_img = bridge.imgmsg_to_cv2(data, "mono8")   # binary
-        img = self.resize_and_reshape(cv2_img)
-        result = self.model.predict(img)
-        self.ackermann_cmd.speed = result[0]
-        self.ackermann_cmd.steering_angle = result[1]
-        print(result)
-        self.rate.sleep()
+        while not rospy.is_shutdown():
+            if self.new_data:
+                img = self.resize_and_reshape(self.camera_image)
+                result = self.model.predict(img)
+                print(result)
+                self.ackermann_cmd.speed = result[0][0]
+                self.ackermann_cmd.steering_angle = result[0][1]
+                self.new_data = False
+                self.rate.sleep()
 
 if __name__ == '__main__':
     p = Predict()
+    while True:
+        p.predict()
 

@@ -12,7 +12,7 @@ from matplotlib import pyplot as plt
 class Preprocess:
 
 	def __init__(self, path, dataname):
-		self.path = path + '/' + dataname
+		self.path = path + dataname
 		self.dataname = dataname
 		self.files_list, self.all_images = self.list_images()
 		self.n = len(self.files_list)
@@ -20,7 +20,7 @@ class Preprocess:
 
 	def list_images(self):
 		filelist = [file for file in sorted(os.listdir(self.path)) if file.endswith('.jpg')]
-		all_imgs = [cv.imread(self.path+file, 0) for file in filelist]
+		all_imgs = [cv.imread(self.path+'/'+file, 0) for file in filelist]
 		resized = self.resize(all_imgs)
 		return filelist, resized
 
