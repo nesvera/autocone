@@ -30,7 +30,7 @@ class Predict:
         self.new_data = False
         self.speed = 0
         self.steering = 0
-        self.model = self.load_trained_model('/home/luiza/catkin_ws/src/autocone/autocone_utils/cnn/saved_models/my_model2.h5')
+        self.model = self.load_trained_model('/home/luiza/catkin_ws/src/autocone/autocone_utils/cnn/saved_models/my_model3.h5')
         
         rospy.Subscriber("/camera/image_raw/binary", Image, self._image_calback, queue_size=1) 
         rospy.Subscriber('/ackermann_cmd', AckermannDrive, self._car_control_callback, queue_size=1)
@@ -53,7 +53,6 @@ class Predict:
         try:
             #Convert ROS image to Opencv
             cv2_img = bridge.imgmsg_to_cv2(data, "mono8")   # binary
-            print('recebida', cv2_img)
         except CvBridgeError, e:
             print(e)
         else:
@@ -73,14 +72,16 @@ class Predict:
         return model
 
     def resize_and_reshape(self, img):
-        resized = cv.resize(img, (86, 115), interpolation = cv.INTER_CUBIC)
+        resized = cv.resize(img, (115, 86), interpolation = cv.INTER_CUBIC)
+        cv.waitKey(0)
+        cv.destroyAllWindows()
         shape = resized.shape
 
         if K.image_data_format() == 'channels_first': # channels, rows, cols
-            resized = resized.reshape(1, 1, shape[1], shape[0]) # isso provavelmente tá errado
+            resized = resized.reshape(1, 1, shape[0], shape[1])
             input_shape = (1, 1, shape[0], shape[1])
         else:
-            resized = resized.reshape(1, shape[1], shape[0], 1) # rows, cols, channels
+            resized = resized.reshape(1, shape[0], shape[1], 1) # rows, cols, channels
             input_shape = (1, shape[0], shape[1], 1)
 
         return resized
@@ -93,6 +94,7 @@ class Predict:
                 print(result)
                 self.ackermann_cmd.speed = result[0][0]
                 self.ackermann_cmd.steering_angle = result[0][1]
+                self.ackermann_pub.publish(self.ackermann_cmd)
                 self.new_data = False
                 self.rate.sleep()
 
