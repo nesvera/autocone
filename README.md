@@ -10,6 +10,8 @@ ROS dependencies needed:
     sudo apt-get install ros-kinetic-joint-state-controller
     sudo apt-get install ros-kinetic-effort-controllers
     sudo apt-get install ros-kinetic-gazebo-ros-control
+    sudo apt-get install ros-kinetic-joy
+
 
     catkin_make install
 
