@@ -19,7 +19,7 @@ from tensorflow.python.keras.layers import (
 )
 from tensorflow.python.keras.models import Model
 from tensorflow.python.keras import backend as K
-from keras import optimizers
+from tensorflow.python.keras.optimizers import Adam
 from keras.callbacks import EarlyStopping
 
 class VAE():
@@ -128,7 +128,7 @@ class VAE():
         def vae_loss(y_true, y_pred):
             return vae_r_loss(y_true, y_pred) + vae_kl_loss(y_true, y_pred)
             
-        adam = optimizers.Adam(lr=0.005, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
+        adam = Adam(lr=0.005, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
         vae.compile(optimizer=adam, loss = vae_loss,  metrics = [vae_r_loss, vae_kl_loss])
         vae.summary()
 
@@ -238,7 +238,9 @@ class VAE():
         vae_decoder = Model(vae_z_input, vae_d6_decoder)
 
         #vae.compile(optimizer='rmsprop', loss = vae_loss,  metrics = [vae_r_loss, vae_kl_loss])
-        vae.compile(optimizer='rmsprop', loss='binary_crossentropy')
+        #vae.compile(optimizer='rmsprop', loss='binary_crossentropy')
+        #optimizer = Adam(lr=0.001)
+        vae.compile(optimizer=Adam(lr=0.001), loss='binary_crossentropy')
         vae.summary()
 
         return (vae, vae_encoder, vae_decoder)
@@ -336,7 +338,7 @@ class VAE():
 if __name__ == "__main__":
 
     username = getpass.getuser()
-    vae_weight = '/home/' + username + '/Documents/autocone_vae_weights/' + "0_55000_55500.h5"
+    vae_weight = '/home/' + username + '/Documents/autocone_vae_weights/' + "0_60000_60500.h5"
 
     vae = VAE()
     #vae.train()

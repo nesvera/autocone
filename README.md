@@ -19,3 +19,6 @@ How to use
     rosrun autocone_train_control train_control.py
     rosrun rqt_image_view rqt_image_view
     rosrun rqt_publisher rqt_publisher
+
+    roslaunch autocone_train_control random_multiple_track.launch
+    roslaunch autocone_gazebo human_one_track.launch controller:="ps4" fixed_speed:=1

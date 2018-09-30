@@ -171,7 +171,6 @@ class TrainControl:
         model_pose.orientation.z = quat[2]
         model_pose.orientation.w = quat[3]
 
-    
         self.gazebo_interface.move_model(self.vehicle_name, model_pose)
 
     # callback listening for collision
@@ -211,6 +210,8 @@ class TrainControl:
             self.gazebo_interface.spawn_model(self.cone_file, cone_name, cone_pose)  
 
     def routine(self):
+
+        print("")
 
         # Pause simulation during startup
         print("Simulation Paused!")
@@ -263,7 +264,9 @@ def progress_bar(iteration, total, prefix = '', suffix = '', decimals = 1, lengt
 
 if __name__ == '__main__':
 
-    print("Starting gazebo ...")
+    print("")
+    print("Placing traffic cones...")
+    time.sleep(10)
 
     control = TrainControl()
     control.routine()

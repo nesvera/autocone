@@ -38,6 +38,7 @@ import getpass
 
 DEBUG = False
 DEBUG_PLOT = False
+DEBUG_TRACK = True
 GUI = True
   
 class Track:
@@ -515,6 +516,8 @@ class TrainControl:
         self.run_timeout = 5000                # milliseconds
         self.cur_sim_time = 0
 
+        self.reverse = False
+
     def restart_car(self, run):
 
         if self.cur_restart_point < len(self.path_point):
@@ -529,15 +532,22 @@ class TrainControl:
         else:
            point2 = self.path_point[0]
          
-        if run%100 == 0:
+        if run%20 == 0:
             self.cur_restart_point += 1
 
         dx = point2[0] - point1[0]
         dy = point2[1] - point1[1]
 
-        theta = math.atan(dy/dx)
+        if run/10 == 0:
+            if self.reverse == True:
+                self.reverse = False
+            else:
+                self.reverse = True
 
-        if (run/50)%2 != 0:
+        theta = math.atan(dy/dx)
+        print(theta, self.reverse)
+        
+        if self.reverse == True:
             theta = theta + math.pi
 
         quat = quaternion_from_euler(0, 0, theta)
@@ -580,7 +590,7 @@ class TrainControl:
             cone_name = self.cone_name_list[i]
 
             # gazebo have some problems with render moved models
-            if GUI == False:
+            if DEBUG_TRACK == False:
                 self.gazebo_interface.move_model(cone_name, cone_pose)
 
             else:
@@ -631,10 +641,11 @@ class TrainControl:
             self.cone_name_list.append(model_name)
 
             try:            
-                # gazebo have some problems with render moved models
-                if GUI == False:
+
+                if DEBUG_TRACK == False:
+                    # gazebo have some problems with render moved models
                     self.gazebo_interface.spawn_model(self.cone_file, model_name, cone_pose)
-                pass
+                
                 
             except rospy.ServiceException, e:
                 print("Error: " + e)
@@ -658,8 +669,11 @@ class TrainControl:
 
         rate = rospy.Rate(15)
 
+        self.qnt_tracks = 100
+
         current_run = 0
         total_runs = 10000
+
         run_ticks = 150 # Amount of ticks per run
 
         
@@ -685,8 +699,10 @@ class TrainControl:
                 # Run for run_ticks
                 for ticks in range(run_ticks):
                     print("Tick {} of {}".format(ticks+1, run_ticks))
+                    #progress_bar(ticks+1, run_ticks, "Ticks", length=50)
+                    
                     if self.collision == True:
-                        print("Collision")
+                        #print("Collision")
                         self.collision = False
                         break
 
@@ -697,10 +713,6 @@ class TrainControl:
                 self.gazebo_interface.pause_physics()
                 self.restart_car(run)
                 
-
-
-                
-
 # Print iterations progress
 def progress_bar(iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█'):
     """
@@ -727,7 +739,9 @@ def progress_bar(iteration, total, prefix = '', suffix = '', decimals = 1, lengt
 
 if __name__ == '__main__':
 
-    print("Starting gazebo ...")
+    time.sleep(5)
+    print("Waiting for gazebo ...")
+    time.sleep(10)
 
     control = TrainControl()
     control.routine()

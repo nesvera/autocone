@@ -62,12 +62,9 @@ class Drive:
         states = data.states
 
         if len(states) > 0:
-            print(self.drive_cur_time - self.drive_init_time)
+            print("Fitness: " + str(self.drive_cur_time - self.drive_init_time))
             self.drive_init_time = self.drive_cur_time
-
             time.sleep(0.5)
-
-
 
 if __name__ == "__main__":
 
