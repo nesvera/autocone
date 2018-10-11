@@ -21,4 +21,4 @@ How to use
     rosrun rqt_publisher rqt_publisher
 
     roslaunch autocone_train_control random_multiple_track.launch
-    roslaunch autocone_gazebo human_one_track.launch controller:="ps4" fixed_speed:=1
+    roslaunch autocone_train_control human_one_track.launch controller:="ps4" fixed_speed:=1

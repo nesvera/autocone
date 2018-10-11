@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import numpy as np
 from glob import glob
 import getpass
@@ -21,6 +23,9 @@ from tensorflow.python.keras.models import Model
 from tensorflow.python.keras import backend as K
 from tensorflow.python.keras.optimizers import Adam
 from keras.callbacks import EarlyStopping
+
+import rospy
+import pickle
 
 class VAE():
 
@@ -66,17 +71,6 @@ class VAE():
         vae_c6 = Conv2D( filters=4, kernel_size=3, padding='same', activation='relu', trainable=True)(vae_m5)
         vae_m6 = MaxPooling2D((2, 2), padding='same', trainable=True)(vae_c6)
 
-        #print("vae_c1 shape " + str(vae_c1.shape))
-        #print("vae_c2 shape " + str(vae_c2.shape))
-        #print("vae_c3 shape " + str(vae_c3.shape))
-        #print("vae_c4 shape " + str(vae_c4.shape))
-        # print("vae_c5 shape " + str(vae_c5.shape))
-        #print("vae_m1 shape " + str(vae_m1.shape))
-        #print("vae_m2 shape " + str(vae_m2.shape))
-        #print("vae_m3 shape " + str(vae_m3.shape))
-        #print("vae_m4 shape " + str(vae_m4.shape))
-        #print("vae_m5 shape " + str(vae_m5.shape))
-        #print("vae_m6 shape " + str(vae_m6.shape))
 
         vae_z_in = Flatten()(vae_m6)
         print("vae_z_in shape " + str(vae_z_in.shape))
@@ -171,73 +165,6 @@ class VAE():
     def load_weights(self, filepath):
         self.model.load_weights(filepath)
 
-    def train(self):
-        username = getpass.getuser()
-        vae_dataset_folder = '/home/' + username + '/Documents/autocone_vae_dataset/'
-        vae_weights_folder = '/media/' + username + '/storage/autocone_vae_weights/'
-
-        # get all images files inside the folder
-        dataset = glob(vae_dataset_folder + "*.jpg")
-        random.shuffle(dataset)
-        dataset_total = len(dataset)
-
-        minibatch_begin = 0
-        minibatch_end = self.minibatch_size
-
-        n_trains = 0
-
-        i = 0
-        while i < self.iterations:
-
-            print("Iteration " + str(i) + " of " + str(self.iterations))
-            print("Data from " + str(minibatch_begin) + " to " + str(minibatch_end) + " of Total: " + str(dataset_total))
-            print("")
-
-            # load minibatch
-            minibatch = dataset[minibatch_begin: minibatch_end]
-
-            data = np.zeros((self.minibatch_size, self.input_dim[0], self.input_dim[1], self.input_dim[2]))
-            for j, img_file in enumerate(minibatch):
-                img = cv2.imread(img_file, 0)
-                img = img.astype('float32')/255.
-                #img = np.reshape(img, (1, img.shape[0], img.shape[1], 1))
-                
-                data[j, :, :, 0] = img
-
-            #for f in range(len(minibatch)):
-            #    imagem = data[f, :, :, 0]
-            #    cv2.imshow('image', imagem)
-            #    cv2.waitKey(0)
-
-            #self.model.fit( x=data, y=data, shuffle=True, epochs=self.epochs, batch_size=self.batch_size)
-
-            self.model.fit( x=data, y=data,
-                    shuffle=True,
-                    epochs=self.epochs,
-                    batch_size=self.batch_size)
-
-            # save weights after some trains sections
-            if n_trains % self.trains_btw_saves == 0:
-                filename = vae_weights_folder + str(i) + "_" + str(minibatch_begin) + "_" + str(minibatch_end) + ".h5"
-                print("Saving " + filename)
-                self.save_weights(filename)
-
-            n_trains += 1
-
-            # increase indexes of dataset
-            minibatch_begin += self.minibatch_size
-            minibatch_end += self.minibatch_size
-
-            # after pass over all dataset, go for other iteration
-            if minibatch_begin >= len(dataset):
-                minibatch_begin = 0
-                minibatch_end = self.minibatch_size
-
-                i += 1
-
-            elif minibatch_end >= len(dataset):
-                minibatch_end = len(dataset)
-    
     def freeze(self):
 
         for layer in self.models.layers[0:5]:
@@ -258,24 +185,73 @@ class VAE():
 
 if __name__ == "__main__":
 
+    rospy.init_node('ae_camera_test', anonymous=True)
+
+    cam = cv2.VideoCapture(1)
+
+
+    i1 = 1
+    i2 = 1
+    minH = 0
+    minS = 180
+    minV = 100
+    maxH = 255
+    maxS = 255
+    maxV = 255
+    fSize = 5	
+
     username = getpass.getuser()
     vae_weight = '/home/' + username + '/Documents/autocone_ae_weights/' + "498_1000_1500.h5"
 
     vae = VAE()
-    #vae.train()
 
     vae.load_weights(vae_weight)
 
 
-    #vae.train()
+    while False:
+        ret, frame = cam.read()
+        cv2.imshow("Webcam", frame)
+	
+	    # up and low color boundaries
+        colorLower = (minH, minS, minV)
+        colorUpper = (maxH, maxS, maxV)
+
+        # is possible to define image size direct in usb_cam package
+        frame = cv2.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_CUBIC)
+        
+        
+        # processing the image
+        # apply blur, converto to HSV color space, create mask based on color, erode and dilate
+        blurred = cv2.GaussianBlur(frame, (fSize, fSize), 0)
+        hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
+        mask = cv2.inRange(hsv, colorLower, colorUpper)
+        mask = cv2.erode(mask, None, iterations=i1)
+        mask = cv2.dilate(mask, None, iterations=i2)
+
+        img = mask.astype('float32')/255.
+
+        cv2.imshow('input', img)
+
+        img = np.reshape(img, (1, img.shape[0], img.shape[1], 1))                
+
+        z = vae.encode_image(img)
+
+        img_out = vae.generate_image(z)
+        img_out = np.reshape(img_out, (img_out.shape[1], img_out.shape[2]))
+
+        cv2.imshow('output', img_out)
+
+
+        cv2.waitKey(1)
+
+
 
     vae_dataset_folder = '/home/' + username + '/Documents/autocone_vae_dataset/'
 
     # get all images files inside the folder
     dataset = glob(vae_dataset_folder + "*.jpg")
 
-    
-    while False:
+    while True:
         img_file = random.choice(dataset)
         img = cv2.imread(img_file, 0)
         print(img)
@@ -296,21 +272,5 @@ if __name__ == "__main__":
         cv2.imshow('output', img_out)
         cv2.waitKey(0)
     
-    
-    
-    z = np.zeros((1, 25))
-
-    while True:
-
-        for i in range(25):
-            z[0, i] = random.gauss(0, 1)
-            #z[0, i] = random.uniform(-2, 2)
-       
-        img_out = vae.generate_image(z)
 
 
-        img_out = np.reshape(img_out, (img_out.shape[1], img_out.shape[2]))
-        
-        cv2.imshow('carai', img_out)
-        cv2.waitKey(0)
-    
