@@ -12,8 +12,7 @@ import argparse
 fixed_speed = False
 fixed_speed_value = 0
 max_speed = 0
-max_steering = 100
-controller = 'xbox_360'
+controller = 'ps4'
 
 ackermann_cmd = AckermannDrive()
 ackermann_pub = None
@@ -33,13 +32,8 @@ def joy_callback(data):
     right_trigger = data.axes[5]
     left_x_stick = data.axes[0]
 
-    forward = (-right_trigger+1)/2.
-    backward = (-left_trigger+1)/2.
-
-    speed = forward*max_speed
-    steering = left_x_stick*max_steering
-
-    print(speed, steering)
+    speed = -right_trigger +1
+    steering = left_x_stick
 
     ackermann_cmd.speed = float(speed)
     ackermann_cmd.steering_angle = float(steering)
@@ -51,7 +45,14 @@ def routine():
     global new_data
 
     while not rospy.is_shutdown():
+
+        if fixed_speed:
+            ackermann_cmd.speed = fixed_speed_value
+
         ackermann_pub.publish(ackermann_cmd)
+
+        #if new_data    
+            #new_data = False
 
         rate.sleep()
             
@@ -63,7 +64,7 @@ if __name__ == "__main__":
                         default=0, required=False,
                         help="Value of fixed velocity.")
     parser.add_argument('-m ', '--max_speed', action='store', dest='max_speed',
-                        default=50, required=False,
+                        default=0, required=False,
                         help="Limit of speed.")
     parser.add_argument('-c', '--controller', action='store', dest='controller',
                         default='ps4', required=False,
@@ -86,7 +87,7 @@ if __name__ == "__main__":
     # Subscribe to the topic that contains the controller keys
     rospy.Subscriber('/joy', Joy, joy_callback)    
 
-    rate = rospy.Rate(100)    
+    rate = rospy.Rate(30)    
 
     ackermann_pub = rospy.Publisher('/ackermann_cmd', AckermannDrive, queue_size=1)
 
