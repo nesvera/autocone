@@ -1,11 +1,16 @@
 <?xml version="1.0"?>
 <launch>
 
+  <arg name="controller" default="ps4"/>
+  <arg name="fixed_speed" default="1.0" />
+  <arg name="max_speed" default="0" />
+
+  <!-- Run gazebo world -->
   <env name="GAZEBO_MODEL_PATH" value="$(find autocone_description)"/>
   <env name="GAZEBO_RESOURCE_PATH" value="$(find autocone_description)"/>
 
   <!-- these are the arguments you can pass this launch file, for example paused:=true -->
-  <arg name="paused" default="false"/>
+  <arg name="paused" default="true"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="extra_gazebo_args" default=""/>
   <arg name="gui" default="true"/>
@@ -75,7 +80,30 @@
       <rosparam file="$(find ackermann_vehicle_gazebo)/config/em_3905_ackermann_ctrlr_params.yaml" command="load"/>
     </node>
   </group>
-  
 
+  <!-- Run script to place the cones and control -->
+  <node pkg="autocone_train_control" type="train_single_track.py" name="place_single_track" output="screen"/>
+
+  <!-- Run image processing -->
+  <node pkg="autocone_vision" type="vision_sim.py" name="vision_sim"/>
+
+  <!-- Run joystick scripts -->
+  <node pkg="joy" type="joy_node" name="joy_node"/>
+  <node pkg="joy_control" type="joy_sim_control.py" name="joy_sim_control" 
+        args="-c $(arg controller) -f $(arg fixed_speed) -m $(arg max_speed)" output="screen" />
+
+  <!-- Run rqt_image_view
+  <node pkg="rqt_image_view" type="rqt_image_view" name="gui" output="screen">
+    <remap from="image" to="/camera/image_raw/binary"/>
+  </node>
+  -->
+  
+  <!-- Display image with opencv -->
+  <node pkg="image_view" type="image_view" name="image_view" respawn="false" output="screen">
+    <remap from="image" to="/camera/image_raw/" />
+  </node>
+
+  <!-- Run datalogger -->
+  <node pkg="autocone_datalogger" type="logger.py" name="logger"/>
 
 </launch>

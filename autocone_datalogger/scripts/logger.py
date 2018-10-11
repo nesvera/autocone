@@ -138,7 +138,8 @@ class Datalogger:
                 time_now = datetime.datetime.now().strftime('%M-%S-%f')
                 data_name = self.sim_name + "_" + time_now
 
-                resized_image = cv2.resize(self.camera_image, None, fx=0.3, fy=0.3, interpolation=cv2.INTER_CUBIC)
+                resized_image = self.camera_image
+                #resized_image = cv2.resize(self.camera_image, None, fx=0.3, fy=0.3, interpolation=cv2.INTER_CUBIC)
                 cv2.imwrite((self.dataset_image_folder + str(data_name) + '.jpg'), resized_image)
 
                 output_data = data_name + ";" + str(self.speed) + ";" + str(self.steering) + ";" + str(self.collision) + ";*\n"
