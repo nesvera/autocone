@@ -63,7 +63,7 @@ if __name__ == "__main__":
                         default=0, required=False,
                         help="Value of fixed velocity.")
     parser.add_argument('-m ', '--max_speed', action='store', dest='max_speed',
-                        default=50, required=False,
+                        default=100, required=False,
                         help="Limit of speed.")
     parser.add_argument('-c', '--controller', action='store', dest='controller',
                         default='ps4', required=False,

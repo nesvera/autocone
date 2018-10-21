@@ -47,12 +47,12 @@ def Move(data):
     #print(throtle, steering)
 
     # build message package
-    msg = "&" + str(int(throtle)) + ";" + str(int(steering)) + ";" + str(int(jetsonStop)) + ";*"
-    #msg = "20;*"
+    msg = "*&" + str(int(throtle)) + ";" + str(int(steering)) + ";" + str(int(jetsonStop)) + ";*"
+    #msg = "&20;***"
     #print(msg)
 
     # Send to arduino
-    serialComm.write(bytes(msg))
+    serialComm.write(msg)
 
     #print(msg)
 
@@ -72,7 +72,7 @@ if __name__ == '__main__':
     # Configure serial communication
     serialComm = serial.Serial()
     serialComm.port = '/dev/ttyACM0'
-    serialComm.baudrate = 1000000
+    serialComm.baudrate = 115200
     serialComm.timeout = 0.5                                      # timeout in seconds
 
     try:
@@ -89,7 +89,7 @@ if __name__ == '__main__':
     print("Communication Initialized!")
 
     # Calibrate arduino
-    msg = "&30;*"
+    #msg = "&30;*"
 
     #raw_input()
     #print("um")
