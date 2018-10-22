@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="max_speed" default="0" />
+
+  <!-- Open camera -->
+  <include file="$(find usb_cam)/launch/usb_cam.launch"/>
+
+  <!-- Start communication with xbox controller -->
+  <node pkg="joy" type="joy_node" name="joy_node"/>
+  <node pkg="autocone_joy_control" type="colin_xbox_control.py" name="colin_xbox_control" 
+        args="-m $(arg max_speed)" output="screen"/>
+
+  <!-- Start serial communication with arduino -->
+  <node pkg="autocone_colin_serial_communication" type="serial_communication.py" name="arduino_serial_comm"/>
+
+</launch>
