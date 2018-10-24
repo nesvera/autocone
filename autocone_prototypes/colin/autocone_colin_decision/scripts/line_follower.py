@@ -198,8 +198,8 @@ class vision():
 			
 			#self.lista_erros.append(erro)
 			#if self.lis
-			print erro
-			print len(self.lista_erros)
+			#print erro
+			#print len(self.lista_erros)
 
 			#if len(self.lista_erros)>300:
 			#	plt.plot(self.lista_erros,"b")
