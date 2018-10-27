@@ -4,7 +4,7 @@
   <arg name="max_speed" default="0" />
 
   <!-- Open camera -->
-  <include file="$(find usb_cam)/launch/usb_cam.launch"/>
+  <include file="$(find usb_cam)/launch/colin_cam.launch"/>
 
   <!-- Start communication with xbox controller -->
   <node pkg="joy" type="joy_node" name="joy_node"/>

@@ -30,11 +30,15 @@ class vision():
 	def __init__(self):
 		self.kernel = np.ones((3,3),np.uint8)
 		#self.cap = cv2.VideoCapture("/home/dudu/usb_camimage_raw.mp4")
-		self.cap = cv2.VideoCapture(1)
+		self.cap = cv2.VideoCapture(0)
+
+		_, frame = self.cap.read()
+		print(frame)
+		raw_input()
 
 		#self.cap = cv2.VideoCapture("/home/dudu/Dropbox/Programming/line_follower/3.mp4")
 		#for x in range(200):
-		#	_ = self.cap.read()
+		
 		self.buffer_pontos = []
 		self.buffer_size = 5
 		self.lista_erros = []
@@ -42,10 +46,16 @@ class vision():
 		#self.Hmatrix = np.array([[-3.90976610e+00,-5.90540798e+00,1.65325824e+03],[-1.24055090e+00,-2.04359973e+01,3.41047888e+03],[-1.22651441e-03,-1.17716292e-02,1.00000000e+00]])
 		self.Hmatrix = np.array([[2.88501164e+01,4.90100565e+01,-9.66583626e+03],[-9.59281605e-01,1.49645379e+02,-2.18268875e+04],[2.27372670e-03,1.54124011e-01,1.00000000e+00]])
 
+		self.Hmatrix = np.array([[-2.94906603e+00,-5.51042566e+00,1.06802055e+03],[2.76648507e-01,-1.48718156e+01,2.81498555e+03],[6.89445335e-05,-1.88569010e-02,1.00000000e+00]])
+
+		self.Hmatrix = np.array([[2.18077578e+00,4.48045099e+00,-2.48385255e+02],[-1.88141518e-01,1.22897414e+01,-8.29750111e+02],[-4.18092263e-04,1.15984417e-02,1.00000000e+00]])
+
+
+
 		self.sf = 5
 
-		h_image = 120
-		w_image = 120
+		h_image = 150
+		w_image = 150
 		h_image*= self.sf
 		w_image*= self.sf
 
@@ -54,7 +64,7 @@ class vision():
 		self.w_image = w_image
 
 		self.last_valid_error = 0
-		self.find_Hmatrix()
+		#self.find_Hmatrix()
 		#self.cap = cv2.VideoCapture("/home/dudu/Dropbox/Programming/line_follower/3.mp4")
 		
 		#self.ransac = linear_model.RANSACRegressor()
@@ -62,9 +72,11 @@ class vision():
 
 	def find_Hmatrix(self):
 		while True:
+			
 			_, image = self.cap.read()
+			
 			cv2.imshow("image",image)
-			if cv2.waitKey(0) == 27: break
+			if cv2.waitKey(1) == 27: break
 
 		lista_entrada = []
 		for x in range(4):
@@ -169,7 +181,7 @@ class vision():
 
 			#print(mean_val[0])		
 
-			if mean_val[0]>200: #and len(approx)>3: #and len(approx)<8:
+			if mean_val[0]>150: #and len(approx)>3: #and len(approx)<8:
 				cv2.drawContours(print_image,[cnt],-1,(255,255,0),5)
 				M = cv2.moments(cnt)
 				cx = int(M['m10']/M['m00'])
@@ -204,7 +216,7 @@ class vision():
 			#if len(self.lista_erros)>300:
 			#	plt.plot(self.lista_erros,"b")
 				
-			xp = np.linspace(0, image.shape[0], 300)    
+			xp = np.linspace(0, image.shape[0], 30)    
 			for x in xp:    
 			   cv2.circle(curve, (int(polinomio(x)),int(x)),2,(255,0,0),-1)
 		except:
@@ -235,13 +247,11 @@ class vision():
 		except:
 			pass
 		#if cv2.waitKey(1)==27:
-		cv2.waitKey(0)
+		cv2.waitKey(1)
 		print 1000/((time.time()-time_1)*1000)
-		return erro
+		return erro*1.2
 		
 def joy_callback(data):
-    global new_data 
-
     axes = data.axes
     buttons = data.buttons
 
@@ -253,11 +263,8 @@ def joy_callback(data):
     backward = (-left_trigger+1)/2.
 
     speed = forward*max_speed
-    #steering = left_x_stick*max_steering
 
-    ackermann_cmd.speed = float(speed)
-
-    new_data = True
+    #ackermann_cmd.speed = float(speed)
 
 def routine():
     global teste
@@ -283,10 +290,9 @@ def routine():
         avg_steer = avg_steer / 10.
 
         ackermann_cmd.steering_angle = int(steer)
-
+	
         ackermann_pub.publish(ackermann_cmd)
 
-        rate.sleep()
                 
 
 if __name__ == "__main__":
@@ -317,4 +323,3 @@ if __name__ == "__main__":
     teste = vision()
 
     routine()
-
