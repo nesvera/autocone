@@ -23,3 +23,20 @@ How to use
 
     roslaunch autocone_train_control random_multiple_track.launch
     roslaunch autocone_train_control human_one_track.launch controller:="ps4" fixed_speed:=1
+
+Colin on Jetson
+
+    sudo apt-get install ros-kinetic-joy
+
+    Install Microsoft xbox360 controller (http://kyubot.tistory.com/92)
+    sudo apt-get install jstest-gtk joystick xboxdrv
+    sudo xboxdrv --silent
+    Create a file: /etc/rc.local
+    File contents:
+    #!/bin/sh -e
+    xboxdrv --silent
+    exit 0
+    Save the file and make it executable with this command:
+    sudo chmod +x /etc/rc.local
+
+    sudo apt-get install ros-kinetic-ackermann*
