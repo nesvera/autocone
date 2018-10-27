@@ -15,11 +15,12 @@ from ackermann_msgs.msg import AckermannDrive
 
 import serial
 from serial import SerialException
+import time
 
 # Jetson to arduino variables
 throtle = 0
 steering = 0
-jetsonStop = True
+jetsonStop = False
 
 throtleMin = -100
 throtleMax = 100
@@ -35,28 +36,34 @@ accelZ = 0
 gyroRoll = 0
 gyroPitch = 0
 gyroYaw = 0
-radioStop = False
+radioStop = False 
 
 # Callback to sendo data to arduino
 def Move(data):
 
-    throtle = int(data.data)
+    throtle = float(data.speed)
+    steering  = float(data.steering_angle)
+
+    #print(throtle, steering)
 
     # build message package
-    msg = str(throtle) + ";" + str(steering) + ";" + str(int(jetsonStop)) + ";*"
+    msg = "*&" + str(int(throtle)) + ";" + str(int(steering)) + ";" + str(int(jetsonStop)) + ";*"
+    #msg = "&20;***"
     #print(msg)
 
     # Send to arduino
     serialComm.write(msg)
+
+    #print(msg)
 
 
 # Loop that reads messages of arduino
 def ReadSerial():
 
     while True:
-
         receiveMsg = serialComm.readline()
         print(receiveMsg)
+        pass
 
 
 if __name__ == '__main__':
@@ -65,8 +72,8 @@ if __name__ == '__main__':
     # Configure serial communication
     serialComm = serial.Serial()
     serialComm.port = '/dev/ttyACM0'
-    serialComm.baudrate = 1000000
-    serialComm.timeout = 1.5                                      # timeout in seconds
+    serialComm.baudrate = 115200
+    serialComm.timeout = 0.5                                      # timeout in seconds
 
     try:
         serialComm.open()
@@ -77,12 +84,26 @@ if __name__ == '__main__':
     if serialComm.is_open == False:
         print("Serial port is closed")
 
+    time.sleep(5)
+
+    print("Communication Initialized!")
+
     # Calibrate arduino
+    #msg = "&30;*"
+
+    #raw_input()
+    #print("um")
+    #serialComm.write(bytes(msg))
+    #raw_input()
+    #print("dois")
+    #serialComm.write(bytes(msg))
+    #raw_input()
+
 
     # Initialize the node
     rospy.init_node('arduino_comm', anonymous=True)
 
-    rospy.Subscriber("/arduino/cmd_drive", Int32, Move)
+    rospy.Subscriber('/ackermann_cmd', AckermannDrive, Move)
 
     # Loop to read serial data
     ReadSerial()    

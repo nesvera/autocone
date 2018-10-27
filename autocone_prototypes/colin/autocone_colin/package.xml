@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>colin_serial_communication</name>
+  <name>autocone_colin</name>
   <version>0.0.0</version>
-  <description>The colin_serial_communication package</description>
+  <description>The autocone_colin package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
@@ -19,7 +19,7 @@
   <!-- Url tags are optional, but multiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/colin_serial_communication</url> -->
+  <!-- <url type="website">http://wiki.ros.org/autocone_colin</url> -->
 
 
   <!-- Author tags are optional, multiple are allowed, one per tag -->

@@ -275,7 +275,7 @@ if __name__ == "__main__":
     dataset = glob(vae_dataset_folder + "*.jpg")
 
     
-    while False:
+    while True:
         img_file = random.choice(dataset)
         img = cv2.imread(img_file, 0)
         print(img)
