@@ -143,7 +143,7 @@ limitations under the License.
     <xacro:property name="camera_length" value="0.071"/>
     <xacro:property name="camera_height" value="0.031"/>
     <xacro:property name="camera_width" value="0.024"/>
-    <xacro:property name="camera_x" value="0.134"/>
+    <xacro:property name="camera_x" value="-0.05"/>
     <xacro:property name="camera_y" value="0.0"/>
     <xacro:property name="camera_z" value="0.2"/>
 
@@ -499,7 +499,7 @@ limitations under the License.
     <joint name="base_link_to_camera" type="fixed">
         <!-- origin moves the reference frame of the child -->
         <origin xyz="${camera_x} ${camera_y} ${camera_z}"
-                rpy="0 0.16 0"/>
+                rpy="0 0.25 0"/>
         <parent link="base_link"/>
         <child link="camera_link"/>
     </joint>
