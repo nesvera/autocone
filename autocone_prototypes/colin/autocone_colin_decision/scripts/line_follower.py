@@ -41,6 +41,7 @@ def joy_callback(data):
 
     speed = forward*max_speed
     ackermann_cmd.speed = float(speed)
+    print(speed)
 
 def image_callback(data):
     
@@ -69,7 +70,7 @@ def image_callback(data):
     ackermann_cmd.steering_angle = float(error)
 
     # Send command to the car
-    ackermann_cmd.speed = float(3)
+    #ackermann_cmd.speed = float(3)
     ackermann_pub.publish(ackermann_cmd)
 
 
