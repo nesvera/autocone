@@ -14,11 +14,15 @@ from sklearn.cluster import DBSCAN
 from sklearn import linear_model
 import os
 import pickle
+import time
 
 sys.path.append("../../")
 from autocone_colin_utils.vision import Vision
 from autocone_colin_utils.camera_calibrator import Parameters
 from autocone_colin_utils.pid import PID
+
+import collections
+import cv2
 
 fixed_speed = False
 fixed_speed_value = 0
@@ -27,6 +31,9 @@ max_steering = 100
 
 ackermann_cmd = AckermannDrive()
 ackermann_pub = None
+
+steer_list = collections.deque(maxlen=5)
+frame_median = collections.deque(maxlen=5)
 
 def joy_callback(data):
     axes = data.axes
@@ -48,6 +55,7 @@ def image_callback(data):
     # Convert image from ROS format to cv2
     try:
         cv_image = bridge.imgmsg_to_cv2(data, "bgr8")
+
     except CvBridgeError as e:
         #print(e)
         pass
@@ -55,23 +63,64 @@ def image_callback(data):
     
     # Image processing
     
-    error = float(vision.find_error(cv_image))
-    error = (error/90.)*0.14
-    error = pid.update(0, error)
+    center_offset, upper_point = vision.find_error(cv_image)
+    
+    upper_point = -(upper_point-200)
 
+    upper_point /= 200.
+    upper_point *= 100.
 
-    if error > 0.14:
-        error = 0.14
-    elif error < -0.14:
-        error = -0.14
+    if upper_point > 100:
+        upper_point = 100
 
-    print(error)
+    if upper_point < -100:
+        upper_point = -100
+    
+    #error = pid.update(0, error)
 
-    ackermann_cmd.steering_angle = float(error)
+    steer_list.append(upper_point)
 
+    steer_angle = 0
+    for i in steer_list:
+        steer_angle += i
+
+    steer_angle /= 5.
+
+    ackermann_cmd.steering_angle = float(upper_point)
     # Send command to the car
-    #ackermann_cmd.speed = float(3)
-    ackermann_pub.publish(ackermann_cmd)
+    #ackermann_pub.publish(ackermann_cmd)
+
+    print(center_offset, upper_point)
+
+    #cv2.imshow('image', cv_image)
+    #cv2.waitKey(1)
+
+def routine():
+
+    cap = cv2.VideoCapture(0)
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+
+    start_time = time.time()
+    while True:
+        
+        _, frame = cap.read()
+
+        #cv2.imshow('frame', frame)
+        #cv2.waitKey(1)
+
+
+        frame_median.append(time.time()-start_time)
+        start_time = time.time()
+
+        fps = 0
+        for i in frame_median:
+            fps += i
+
+        fps /= 5.
+        fps =  1/fps
+
+        print(fps)
 
 
 if __name__ == "__main__":
@@ -82,7 +131,7 @@ if __name__ == "__main__":
                         default=0, required=False,
                         help="Value of fixed velocity.")
     parser.add_argument('-m ', '--max_speed', action='store', dest='max_speed',
-                        default=50, required=False,
+                        default=80, required=False,
                         help="Limit of speed.")
     parser.add_argument('-p', '-parameters', action='store', dest='parameters',
                         required=True, help="Path to the parameters of the camera")
@@ -121,6 +170,6 @@ if __name__ == "__main__":
     bridge = CvBridge()
 
     # Subscribe to publish on the car topic
-    ackermann_pub = rospy.Publisher('/ackermann_cmd', AckermannDrive, queue_size=1)
+    ackermann_pub = rospy.Publisher('/ackermann_cmd', AckermannDrive, queue_size=30)
     
-    rospy.spin()
+    routine()
