@@ -90,6 +90,14 @@ def routine():
         # Set commands to the car
         ackermann_cmd.steering_angle = int(steer)
         
+        speed_angle = abs(angle_to_upper)
+        if speed_angle > 15:
+            #ackermann_cmd.speed = float(50)
+            print("devagar carai")
+        else:
+            #ackermann_cmd.speed = float(60)
+            print("acelera") 
+
         # Send command to the car
         if autonomous_mode == True:
             ackermann_pub.publish(ackermann_cmd)
@@ -104,7 +112,7 @@ def routine():
         fps /= 5.
         fps =  1/fps
 
-        #print(int(fps), int(center_offset), int(upper_point), int(angle_to_upper), int(steer))
+        print(int(fps), int(center_offset), int(upper_point), int(angle_to_upper), int(steer))
 
         #if DEBUG:
         draw()
@@ -153,7 +161,7 @@ if __name__ == "__main__":
         exit(0)
 
     # Steering control
-    pid = PID(2.5, 0.05, 0, 50)
+    pid = PID(3, 0.1, 0, 50)
 
     rospy.init_node('line_follower', anonymous=True)
     rate = rospy.Rate(30)    
