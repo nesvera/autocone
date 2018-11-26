@@ -91,17 +91,11 @@ def routine():
         ackermann_cmd.steering_angle = int(steer)
         
         speed_angle = abs(angle_to_upper)
-        if speed_angle > 15:
-            #ackermann_cmd.speed = float(50)
-            print("devagar carai")
-        else:
-            #ackermann_cmd.speed = float(60)
-            print("acelera") 
 
         # Send command to the car
         if autonomous_mode == True:
             ackermann_pub.publish(ackermann_cmd)
-            print("ta andando")
+            #print("ta andando")
 
         # FPS
         frame_median.append(time.time()-start_time)
@@ -112,7 +106,7 @@ def routine():
         fps /= 5.
         fps =  1/fps
 
-        print(int(fps), int(center_offset), int(upper_point), int(angle_to_upper), int(steer))
+        print(int(speed_angle), int(steer))
 
         #if DEBUG:
         draw()
