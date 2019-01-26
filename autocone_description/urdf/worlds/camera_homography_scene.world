@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="default">
+    <scene>
+      <sky>
+        <clouds>
+          <speed>12</speed>
+        </clouds>
+      </sky>
+      <ambient>1.0 1.0 1.0 1.0</ambient>
+      <shadows>false</shadows>
+    </scene>
+
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <include>
+      <name>camera_homography_shape</name>
+      <uri>model://urdf/models/camera_homography_shape</uri>
+      <pose>0 0.70 0.0 0 0 0</pose>
+    </include>
+    
+    <include>
+      <name>small_dot 0</name>
+      <uri>model://urdf/models/small_dot</uri>
+      <pose>-0.20 0.6 0.001 0 0 0</pose>
+    </include>
+    
+    <include>
+      <name>small_dot 1</name>
+      <uri>model://urdf/models/small_dot</uri>
+      <pose>0.20 0.6 0.001 0 0 0</pose>
+    </include>
+    
+    <include>
+      <name>small_dot 2</name>
+      <uri>model://urdf/models/small_dot</uri>
+      <pose>-0.20 0.8 0.001 0 0 0</pose>
+    </include>
+    
+    <include>
+      <name>small_dot 3</name>
+      <uri>model://urdf/models/small_dot</uri>
+      <pose>0.20 0.8 0.001 0 0 0</pose>
+    </include>
+
+
+    <include>
+      <static>true</static>
+      <name>stop_sign_1</name>
+      <uri>model://stop_sign</uri>
+      <pose>7.9 -7.0 0 0 0 -1.53</pose>
+    </include>
+    
+    <include>
+      <static>true</static>
+      <name>cone_1</name>
+      <uri>model://construction_cone</uri>
+      <pose>25.2 -0.2 0 0 0 0</pose>
+    </include>
+    
+    <include>
+      <static>true</static>
+      <name>cone_2</name>
+      <uri>model://construction_cone</uri>
+      <pose>6.18 6.54 0 0 0 0</pose>
+    </include>
+    
+    <include>
+      <static>true</static>
+      <name>cone_3</name>
+      <uri>model://construction_cone</uri>
+      <pose>-25.4 -0.3 0 0 0 0</pose>
+    </include>
+    
+    <include>
+      <static>true</static>
+      <name>cone_4</name>
+      <uri>model://construction_cone</uri>
+      <pose>12.4 -7.0 0 0 0 0</pose>
+    </include>
+    
+  </world>
+</sdf>
