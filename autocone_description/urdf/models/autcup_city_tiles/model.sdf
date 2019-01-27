@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="autcup_city_tiles">
+    <!--<pose>0 0 0 0 0 0</pose>-->
+    <static>true</static>
+  
+    <link name="link">
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://autocone_description/urdf/models/autcup_city_tiles/autcup_city_tiles.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+            <contact>
+              <collide_without_contact>true</collide_without_contact>
+            </contact>
+          </surface>
+
+      </collision>
+
+      <visual name="visual">
+        <cast_shadows>true</cast_shadows>
+        <geometry>
+          <mesh>
+            <uri>model://autocone_description/urdf/models/autcup_city_tiles/autcup_city_tiles.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>

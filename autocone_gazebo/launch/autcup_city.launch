@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<launch>
+
+  <env name="GAZEBO_MODEL_PATH" value="$(find autocone_description)"/>
+  <env name="GAZEBO_RESOURCE_PATH" value="$(find autocone_description)"/>
+
+  <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="extra_gazebo_args" default=""/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="physics" default="dart"/>
+  <arg name="verbose" default="false"/>
+  <arg name="namespace" default="/"/>
+  <arg name="world_name" default="$(find autocone_description)/urdf/worlds/autcup_city_white_mark.world"/>
+  <arg name="cmd_timeout" default="0.5"/>
+
+  <!-- set command arguments -->
+  <arg unless="$(arg paused)" name="command_arg1" value=""/>
+  <arg     if="$(arg paused)" name="command_arg1" value="-u"/>
+  <arg unless="$(arg headless)" name="command_arg2" value=""/>
+  <arg     if="$(arg headless)" name="command_arg2" value="-r"/>
+  <arg unless="$(arg verbose)" name="command_arg3" value=""/>
+  <arg     if="$(arg verbose)" name="command_arg3" value="--verbose"/>
+  <arg unless="$(arg debug)" name="script_type" value="gzserver"/>
+  <arg     if="$(arg debug)" name="script_type" value="debug"/>
+
+  <!-- set use_sim_time flag -->
+  <group if="$(arg use_sim_time)">
+    <param name="/use_sim_time" value="true" />
+  </group>
+  
+  <!-- Vehicle pose -->
+  <arg name="x" default="-8.5"/>
+  <arg name="y" default="-10.6"/>
+  <arg name="z" default="0.1"/>
+  <arg name="roll" default="0.0"/>
+  <arg name="pitch" default="0.0"/>
+  <arg name="yaw" default="0.0"/>
+
+  <!-- Load vehicle -->
+  <include file="$(find ackermann_vehicle_description)/launch/ackermann_vehicle.launch">
+    <arg name="namespace" value="$(arg namespace)"/>
+  </include>
+
+  <group ns="$(arg namespace)">
+
+    <!-- Create the world. -->
+    <!-- We resume the logic in empty_world.launch -->
+    <!-- Create the world. -->
+    <!-- start gazebo server-->
+    <node name="gazebo" pkg="gazebo_ros" type="$(arg script_type)" respawn="false" output="screen"
+          args="$(arg command_arg1) $(arg command_arg2) $(arg command_arg3) -e $(arg physics) $(arg extra_gazebo_args) $(arg world_name)" >
+    </node>
+
+    <!-- start gazebo client -->
+    <group if="$(arg gui)">
+      <node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" respawn="false" output="screen"/>
+    </group>
+
+    <!-- Spawn the vehicle. -->
+    <node name="spawn_vehicle" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model ackermann_vehicle
+                -gazebo_namespace /$(arg namespace)/gazebo
+                -x $(arg x) -y $(arg y) -z $(arg z)
+                -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
+
+    <!-- Load the joint controllers. One of these publishes the joint states to joint_states. -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner"
+          args="$(find ackermann_vehicle_gazebo)/config/em_3905_joint_ctrlr_params.yaml"/>
+
+    <!-- Control the steering, axle, and shock absorber joints. -->
+    <node name="ackermann_controller" pkg="ackermann_vehicle_gazebo"
+          type="ackermann_controller">
+      <param name="cmd_timeout" value="$(arg cmd_timeout)"/>
+      <rosparam file="$(find ackermann_vehicle_gazebo)/config/em_3905_ackermann_ctrlr_params.yaml" command="load"/>
+    </node>
+  </group>
+
+</launch>

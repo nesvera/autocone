@@ -1,0 +1,123 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="default">
+    <scene>
+      <sky>
+        <clouds>
+          <speed>12</speed>
+        </clouds>
+      </sky>
+      <ambient>1.0 1.0 1.0 1.0</ambient>
+      <shadows>false</shadows>
+    </scene>
+
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    
+    <include>
+      <name>autcup_city_white_mark</name>
+      <uri>model://urdf/models/autcup_city_white_mark</uri>
+      <pose>0 0 0.01 0 0 0</pose>
+    </include>
+    
+    <include>
+      <static>true</static>
+      <name>cone_1</name>
+      <uri>model://construction_cone</uri>
+      <pose>10.0 0.94 0 0 0 0</pose>
+    </include>
+    
+    <include>
+      <static>true</static>
+      <name>cone_2</name>
+      <uri>model://construction_cone</uri>
+      <pose>15.0 -13.0 0 0 0 0</pose>
+    </include>
+    
+    <include>
+      <static>true</static>
+      <name>cone_3</name>
+      <uri>model://construction_cone</uri>
+      <pose>12.87 -2.0 0 0 0 0</pose>
+    </include>
+    
+    <include>
+      <static>true</static>
+      <name>cone_4</name>
+      <uri>model://construction_cone</uri>
+      <pose>12.87 -4.0 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <static>true</static>
+      <name>cone_5</name>
+      <uri>model://construction_cone</uri>
+      <pose>12.87 -7.0 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <static>true</static>
+      <name>cone_6</name>
+      <uri>model://construction_cone</uri>
+      <pose>12.0 -9.0 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <static>true</static>
+      <name>cone_7</name>
+      <uri>model://construction_cone</uri>
+      <pose>15.0 -12.0 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <static>true</static>
+      <name>cone_8</name>
+      <uri>model://construction_cone</uri>
+      <pose>10.0 -18.0 0 0 0 0</pose>
+    </include>
+    
+    <include>
+      <static>true</static>
+      <name>cone_9</name>
+      <uri>model://construction_cone</uri>
+      <pose>10.6 -13.0 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <static>true</static>
+      <name>cone_10</name>
+      <uri>model://construction_cone</uri>
+      <pose>1.28 -2.47 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <static>true</static>
+      <name>cone_11</name>
+      <uri>model://construction_cone</uri>
+      <pose>1.28 -1.98 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <static>true</static>
+      <name>cone_12</name>
+      <uri>model://construction_cone</uri>
+      <pose>1.06 -7.0 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <static>true</static>
+      <name>cone_13</name>
+      <uri>model://construction_cone</uri>
+      <pose>1.06 -12.0 0 0 0 0</pose>
+    </include>
+
+  </world>
+</sdf>
